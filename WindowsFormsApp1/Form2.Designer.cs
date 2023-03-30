@@ -42,6 +42,9 @@ namespace WindowsFormsApp1
             this.layoutForThresholdNegative = new System.Windows.Forms.TableLayoutPanel();
             this.makeThresholdNegative = new System.Windows.Forms.Button();
             this.changeThresholdNegative = new System.Windows.Forms.NumericUpDown();
+            this.layoutForThresholding = new System.Windows.Forms.TableLayoutPanel();
+            this.makeThresholding = new System.Windows.Forms.Button();
+            this.changeThresholding = new System.Windows.Forms.NumericUpDown();
             this.applyButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -50,6 +53,8 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.changeBrightnessNumeric)).BeginInit();
             this.layoutForThresholdNegative.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.changeThresholdNegative)).BeginInit();
+            this.layoutForThresholding.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.changeThresholding)).BeginInit();
             this.SuspendLayout();
             // 
             // mainPictureBox
@@ -67,7 +72,7 @@ namespace WindowsFormsApp1
             this.makeGrayScale.AutoSize = true;
             this.makeGrayScale.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.makeGrayScale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.makeGrayScale.Location = new System.Drawing.Point(3, 251);
+            this.makeGrayScale.Location = new System.Drawing.Point(3, 291);
             this.makeGrayScale.Name = "makeGrayScale";
             this.makeGrayScale.Size = new System.Drawing.Size(621, 24);
             this.makeGrayScale.TabIndex = 3;
@@ -100,7 +105,7 @@ namespace WindowsFormsApp1
             // 
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Location = new System.Drawing.Point(3, 311);
+            this.button1.Location = new System.Drawing.Point(3, 351);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(621, 26);
             this.button1.TabIndex = 1;
@@ -132,9 +137,10 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Controls.Add(this.layoutForChangeBrightness, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.makeBrightnessHistogram, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.layoutForThresholdNegative, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForThresholding, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 9);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -144,11 +150,12 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 362);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 411);
             this.tableLayoutPanel1.TabIndex = 1;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -212,7 +219,7 @@ namespace WindowsFormsApp1
             this.layoutForThresholdNegative.Name = "layoutForThresholdNegative";
             this.layoutForThresholdNegative.RowCount = 1;
             this.layoutForThresholdNegative.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.layoutForThresholdNegative.Size = new System.Drawing.Size(621, 24);
+            this.layoutForThresholdNegative.Size = new System.Drawing.Size(621, 29);
             this.layoutForThresholdNegative.TabIndex = 2;
             // 
             // makeThresholdNegative
@@ -241,12 +248,55 @@ namespace WindowsFormsApp1
             this.changeThresholdNegative.Size = new System.Drawing.Size(305, 20);
             this.changeThresholdNegative.TabIndex = 6;
             // 
+            // layoutForThresholding
+            // 
+            this.layoutForThresholding.AutoSize = true;
+            this.layoutForThresholding.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.layoutForThresholding.ColumnCount = 2;
+            this.layoutForThresholding.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForThresholding.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForThresholding.Controls.Add(this.makeThresholding, 0, 0);
+            this.layoutForThresholding.Controls.Add(this.changeThresholding, 1, 0);
+            this.layoutForThresholding.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutForThresholding.Location = new System.Drawing.Point(3, 256);
+            this.layoutForThresholding.Name = "layoutForThresholding";
+            this.layoutForThresholding.RowCount = 1;
+            this.layoutForThresholding.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.layoutForThresholding.Size = new System.Drawing.Size(621, 29);
+            this.layoutForThresholding.TabIndex = 2;
+            // 
+            // makeThresholding
+            // 
+            this.makeThresholding.Location = new System.Drawing.Point(3, 3);
+            this.makeThresholding.Name = "makeThresholding";
+            this.makeThresholding.Size = new System.Drawing.Size(304, 23);
+            this.makeThresholding.TabIndex = 5;
+            this.makeThresholding.Text = "Change Thresholding";
+            this.makeThresholding.UseVisualStyleBackColor = true;
+            // 
+            // changeThresholding
+            // 
+            this.changeThresholding.Location = new System.Drawing.Point(313, 3);
+            this.changeThresholding.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.changeThresholding.Minimum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            -2147483648});
+            this.changeThresholding.Name = "changeThresholding";
+            this.changeThresholding.Size = new System.Drawing.Size(305, 20);
+            this.changeThresholding.TabIndex = 6;
+            // 
             // applyButton
             // 
             this.applyButton.AutoSize = true;
             this.applyButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.applyButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.applyButton.Location = new System.Drawing.Point(3, 281);
+            this.applyButton.Location = new System.Drawing.Point(3, 321);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(621, 24);
             this.applyButton.TabIndex = 5;
@@ -258,7 +308,7 @@ namespace WindowsFormsApp1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(627, 362);
+            this.ClientSize = new System.Drawing.Size(627, 411);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form2";
@@ -271,6 +321,8 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.changeBrightnessNumeric)).EndInit();
             this.layoutForThresholdNegative.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.changeThresholdNegative)).EndInit();
+            this.layoutForThresholding.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.changeThresholding)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,5 +346,9 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TableLayoutPanel layoutForThresholdNegative;
         public System.Windows.Forms.Button makeThresholdNegative;
         public System.Windows.Forms.NumericUpDown changeThresholdNegative;
+
+        private System.Windows.Forms.TableLayoutPanel layoutForThresholding;
+        public System.Windows.Forms.Button makeThresholding;
+        public System.Windows.Forms.NumericUpDown changeThresholding;
     }
 }

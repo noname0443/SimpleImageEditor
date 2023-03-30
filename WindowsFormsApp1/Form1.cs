@@ -64,6 +64,31 @@ namespace WindowsFormsApp1
             return bmp;
         }
 
+        private Bitmap Thresholding(Bitmap bmp, int p)
+        {
+            Func<int, int, int> S = (int Color, int Brightness) =>
+            {
+                if (Brightness >= p) return 255;
+                else return 0;
+            };
+
+            for (int i = 0; i < bmp.Width; i++)
+            {
+                for (int j = 0; j < bmp.Height; j++)
+                {
+                    Color color = bmp.GetPixel(i, j);
+                    int brightness = (int)(0.3 * color.R + 0.59 * color.G + 0.11 * color.B);
+                    bmp.SetPixel(i, j,
+                        Color.FromArgb(
+                            S(color.R, brightness),
+                            S(color.G, brightness),
+                            S(color.B, brightness))
+                        );
+                }
+            }
+            return bmp;
+        }
+
         private Bitmap changeBrightness(Bitmap bmp, int value)
         {
             Func<int, int, int> S = (int Color, int Brightness) =>
@@ -118,6 +143,12 @@ namespace WindowsFormsApp1
             {
                 Bitmap bmp = new Bitmap(form.mainPictureBox.Image);
                 form.mainPictureBox.Image = ThresholdNegative(bmp, (int)form.changeThresholdNegative.Value);
+            };
+
+            form.makeThresholding.Click += (a, b) =>
+            {
+                Bitmap bmp = new Bitmap(form.mainPictureBox.Image);
+                form.mainPictureBox.Image = Thresholding(bmp, (int)form.changeThresholding.Value);
             };
 
             form.makeGrayScale.Click += (a, b) => {
