@@ -39,6 +39,56 @@ namespace WindowsFormsApp1
             return bmp;
         }
 
+        private Bitmap ThresholdNegative(Bitmap bmp, int p)
+        {
+            Func<int, int, int> S = (int Color, int Brightness) =>
+            {
+                if (Brightness >= p) return 255 - Color;
+                else return Color;
+            };
+
+            for (int i = 0; i < bmp.Width; i++)
+            {
+                for (int j = 0; j < bmp.Height; j++)
+                {
+                    Color color = bmp.GetPixel(i, j);
+                    int brightness = (int)(0.3 * color.R + 0.59 * color.G + 0.11 * color.B);
+                    bmp.SetPixel(i, j,
+                        Color.FromArgb(
+                            S(color.R, brightness),
+                            S(color.G, brightness),
+                            S(color.B, brightness))
+                        );
+                }
+            }
+            return bmp;
+        }
+
+        private Bitmap changeBrightness(Bitmap bmp, int value)
+        {
+            Func<int, int, int> S = (int Color, int Brightness) =>
+            {
+                if (Color + Brightness > 255) return 255;
+                else if (Color + Brightness < 0) return 0;
+                else return Color + Brightness;
+            };
+
+            for (int i = 0; i < bmp.Width; i++)
+            {
+                for (int j = 0; j < bmp.Height; j++)
+                {
+                    Color color = bmp.GetPixel(i, j);
+                    bmp.SetPixel(i, j,
+                        Color.FromArgb(
+                            S(color.R, value),
+                            S(color.G, value),
+                            S(color.B, value))
+                        );
+                }
+            }
+            return bmp;
+        }
+
         private void makePanel(PictureBox pictureBox)
         {
             Form2 form = new Form2();
@@ -57,6 +107,17 @@ namespace WindowsFormsApp1
             {
                 Console.WriteLine(form.zoomBar.Value);
                 changePictureSize(form.mainPictureBox, form.zoomBar.Value);
+            };
+
+            form.changeBrightness.Click += (a, b) => {
+                Bitmap bmp = new Bitmap(form.mainPictureBox.Image);
+                form.mainPictureBox.Image = changeBrightness(bmp, (int)form.changeBrightnessNumeric.Value);
+            };
+
+            form.makeThresholdNegative.Click += (a, b) =>
+            {
+                Bitmap bmp = new Bitmap(form.mainPictureBox.Image);
+                form.mainPictureBox.Image = ThresholdNegative(bmp, (int)form.changeThresholdNegative.Value);
             };
 
             form.makeGrayScale.Click += (a, b) => {

@@ -36,13 +36,20 @@ namespace WindowsFormsApp1
             this.button1 = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.layoutForChangeBrightness = new System.Windows.Forms.TableLayoutPanel();
-            this.applyButton = new System.Windows.Forms.Button();
             this.zoomBar = new System.Windows.Forms.TrackBar();
+            this.layoutForChangeBrightness = new System.Windows.Forms.TableLayoutPanel();
+            this.changeBrightnessNumeric = new System.Windows.Forms.NumericUpDown();
+            this.layoutForThresholdNegative = new System.Windows.Forms.TableLayoutPanel();
+            this.makeThresholdNegative = new System.Windows.Forms.Button();
+            this.changeThresholdNegative = new System.Windows.Forms.NumericUpDown();
+            this.applyButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            this.layoutForChangeBrightness.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zoomBar)).BeginInit();
+            this.layoutForChangeBrightness.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.changeBrightnessNumeric)).BeginInit();
+            this.layoutForThresholdNegative.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.changeThresholdNegative)).BeginInit();
             this.SuspendLayout();
             // 
             // mainPictureBox
@@ -60,9 +67,9 @@ namespace WindowsFormsApp1
             this.makeGrayScale.AutoSize = true;
             this.makeGrayScale.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.makeGrayScale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.makeGrayScale.Location = new System.Drawing.Point(3, 176);
+            this.makeGrayScale.Location = new System.Drawing.Point(3, 251);
             this.makeGrayScale.Name = "makeGrayScale";
-            this.makeGrayScale.Size = new System.Drawing.Size(621, 23);
+            this.makeGrayScale.Size = new System.Drawing.Size(621, 24);
             this.makeGrayScale.TabIndex = 3;
             this.makeGrayScale.Text = "Make Gray-Scale";
             this.makeGrayScale.UseVisualStyleBackColor = true;
@@ -72,9 +79,9 @@ namespace WindowsFormsApp1
             this.makeBrightnessHistogram.AutoSize = true;
             this.makeBrightnessHistogram.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.makeBrightnessHistogram.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.makeBrightnessHistogram.Location = new System.Drawing.Point(3, 176);
+            this.makeBrightnessHistogram.Location = new System.Drawing.Point(3, 191);
             this.makeBrightnessHistogram.Name = "makeBrightnessHistogram";
-            this.makeBrightnessHistogram.Size = new System.Drawing.Size(394, 23);
+            this.makeBrightnessHistogram.Size = new System.Drawing.Size(621, 24);
             this.makeBrightnessHistogram.TabIndex = 5;
             this.makeBrightnessHistogram.Text = "Make Brightness-Histogram";
             this.makeBrightnessHistogram.UseVisualStyleBackColor = true;
@@ -82,12 +89,9 @@ namespace WindowsFormsApp1
             // 
             // changeBrightness
             // 
-            this.changeBrightness.AutoSize = true;
-            this.changeBrightness.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.changeBrightness.Dock = System.Windows.Forms.DockStyle.Fill;
             this.changeBrightness.Location = new System.Drawing.Point(3, 3);
             this.changeBrightness.Name = "changeBrightness";
-            this.changeBrightness.Size = new System.Drawing.Size(595, 14);
+            this.changeBrightness.Size = new System.Drawing.Size(304, 23);
             this.changeBrightness.TabIndex = 5;
             this.changeBrightness.Text = "Change Brightness";
             this.changeBrightness.UseVisualStyleBackColor = true;
@@ -96,7 +100,7 @@ namespace WindowsFormsApp1
             // 
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Location = new System.Drawing.Point(3, 260);
+            this.button1.Location = new System.Drawing.Point(3, 311);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(621, 26);
             this.button1.TabIndex = 1;
@@ -109,9 +113,9 @@ namespace WindowsFormsApp1
             this.deleteButton.AutoSize = true;
             this.deleteButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.deleteButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deleteButton.Location = new System.Drawing.Point(3, 147);
+            this.deleteButton.Location = new System.Drawing.Point(3, 126);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(621, 23);
+            this.deleteButton.Size = new System.Drawing.Size(621, 24);
             this.deleteButton.TabIndex = 0;
             this.deleteButton.Text = "Delete image";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -122,56 +126,31 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.deleteButton, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.layoutForChangeBrightness, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.mainPictureBox, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.zoomBar, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.deleteButton, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForChangeBrightness, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.makeBrightnessHistogram, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForThresholdNegative, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 364);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 362);
             this.tableLayoutPanel1.TabIndex = 1;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // layoutForChangeBrightness
-            // 
-            this.layoutForChangeBrightness.AutoSize = true;
-            this.layoutForChangeBrightness.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.layoutForChangeBrightness.ColumnCount = 2;
-            this.layoutForChangeBrightness.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.layoutForChangeBrightness.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutForChangeBrightness.Controls.Add(this.changeBrightness, 0, 0);
-            this.layoutForChangeBrightness.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutForChangeBrightness.Location = new System.Drawing.Point(3, 205);
-            this.layoutForChangeBrightness.Name = "layoutForChangeBrightness";
-            this.layoutForChangeBrightness.RowCount = 1;
-            this.layoutForChangeBrightness.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutForChangeBrightness.Size = new System.Drawing.Size(621, 525);
-            this.layoutForChangeBrightness.TabIndex = 2;
-            // 
-            // applyButton
-            // 
-            this.applyButton.AutoSize = true;
-            this.applyButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.applyButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.applyButton.Location = new System.Drawing.Point(3, 231);
-            this.applyButton.Name = "applyButton";
-            this.applyButton.Size = new System.Drawing.Size(621, 23);
-            this.applyButton.TabIndex = 5;
-            this.applyButton.Text = "Apply Changes";
-            this.applyButton.UseVisualStyleBackColor = true;
             // 
             // zoomBar
             // 
@@ -180,17 +159,106 @@ namespace WindowsFormsApp1
             this.zoomBar.Maximum = 1200;
             this.zoomBar.Minimum = 1;
             this.zoomBar.Name = "zoomBar";
-            this.zoomBar.Size = new System.Drawing.Size(621, 45);
+            this.zoomBar.Size = new System.Drawing.Size(621, 24);
             this.zoomBar.TabIndex = 6;
             this.zoomBar.Value = 1;
             this.zoomBar.Scroll += new System.EventHandler(this.zoomBar_Scroll);
+            // 
+            // layoutForChangeBrightness
+            // 
+            this.layoutForChangeBrightness.AutoSize = true;
+            this.layoutForChangeBrightness.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.layoutForChangeBrightness.ColumnCount = 2;
+            this.layoutForChangeBrightness.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForChangeBrightness.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForChangeBrightness.Controls.Add(this.changeBrightness, 0, 0);
+            this.layoutForChangeBrightness.Controls.Add(this.changeBrightnessNumeric, 1, 0);
+            this.layoutForChangeBrightness.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutForChangeBrightness.Location = new System.Drawing.Point(3, 156);
+            this.layoutForChangeBrightness.Name = "layoutForChangeBrightness";
+            this.layoutForChangeBrightness.RowCount = 1;
+            this.layoutForChangeBrightness.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.layoutForChangeBrightness.Size = new System.Drawing.Size(621, 29);
+            this.layoutForChangeBrightness.TabIndex = 2;
+            // 
+            // changeBrightnessNumeric
+            // 
+            this.changeBrightnessNumeric.Location = new System.Drawing.Point(313, 3);
+            this.changeBrightnessNumeric.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.changeBrightnessNumeric.Minimum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            -2147483648});
+            this.changeBrightnessNumeric.Name = "changeBrightnessNumeric";
+            this.changeBrightnessNumeric.Size = new System.Drawing.Size(305, 20);
+            this.changeBrightnessNumeric.TabIndex = 6;
+            // 
+            // layoutForThresholdNegative
+            // 
+            this.layoutForThresholdNegative.AutoSize = true;
+            this.layoutForThresholdNegative.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.layoutForThresholdNegative.ColumnCount = 2;
+            this.layoutForThresholdNegative.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForThresholdNegative.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForThresholdNegative.Controls.Add(this.makeThresholdNegative, 0, 0);
+            this.layoutForThresholdNegative.Controls.Add(this.changeThresholdNegative, 1, 0);
+            this.layoutForThresholdNegative.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutForThresholdNegative.Location = new System.Drawing.Point(3, 221);
+            this.layoutForThresholdNegative.Name = "layoutForThresholdNegative";
+            this.layoutForThresholdNegative.RowCount = 1;
+            this.layoutForThresholdNegative.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.layoutForThresholdNegative.Size = new System.Drawing.Size(621, 24);
+            this.layoutForThresholdNegative.TabIndex = 2;
+            // 
+            // makeThresholdNegative
+            // 
+            this.makeThresholdNegative.Location = new System.Drawing.Point(3, 3);
+            this.makeThresholdNegative.Name = "makeThresholdNegative";
+            this.makeThresholdNegative.Size = new System.Drawing.Size(304, 23);
+            this.makeThresholdNegative.TabIndex = 5;
+            this.makeThresholdNegative.Text = "Change Threshold Negative";
+            this.makeThresholdNegative.UseVisualStyleBackColor = true;
+            // 
+            // changeThresholdNegative
+            // 
+            this.changeThresholdNegative.Location = new System.Drawing.Point(313, 3);
+            this.changeThresholdNegative.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.changeThresholdNegative.Minimum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            -2147483648});
+            this.changeThresholdNegative.Name = "changeThresholdNegative";
+            this.changeThresholdNegative.Size = new System.Drawing.Size(305, 20);
+            this.changeThresholdNegative.TabIndex = 6;
+            // 
+            // applyButton
+            // 
+            this.applyButton.AutoSize = true;
+            this.applyButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.applyButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.applyButton.Location = new System.Drawing.Point(3, 281);
+            this.applyButton.Name = "applyButton";
+            this.applyButton.Size = new System.Drawing.Size(621, 24);
+            this.applyButton.TabIndex = 5;
+            this.applyButton.Text = "Apply Changes";
+            this.applyButton.UseVisualStyleBackColor = true;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(627, 364);
+            this.ClientSize = new System.Drawing.Size(627, 362);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form2";
@@ -198,9 +266,11 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.layoutForChangeBrightness.ResumeLayout(false);
-            this.layoutForChangeBrightness.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zoomBar)).EndInit();
+            this.layoutForChangeBrightness.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.changeBrightnessNumeric)).EndInit();
+            this.layoutForThresholdNegative.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.changeThresholdNegative)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,5 +289,10 @@ namespace WindowsFormsApp1
         public System.Windows.Forms.Button applyButton;
         public System.Windows.Forms.TrackBar zoomBar;
         public System.Windows.Forms.DataVisualization.Charting.Chart chart;
+        public System.Windows.Forms.NumericUpDown changeBrightnessNumeric;
+
+        private System.Windows.Forms.TableLayoutPanel layoutForThresholdNegative;
+        public System.Windows.Forms.Button makeThresholdNegative;
+        public System.Windows.Forms.NumericUpDown changeThresholdNegative;
     }
 }
