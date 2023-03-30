@@ -49,16 +49,18 @@ namespace WindowsFormsApp1
                 for (int j = 0; j < bmp.Height; j++)
                 {
                     Color color = bmp.GetPixel(i, j);
-                    brightness[(byte)(0.3 * color.R + 0.59 * color.G + 0.11 * color.B)]++;
+                    int value = (int)(0.3 * color.R + 0.59 * color.G + 0.11 * color.B);
+                    if (value >= 255) brightness[255]++;
+                    else brightness[value]++;
                 }
             }
 
-            form.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Area;
+            form.chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
             form.chart1.ChartAreas[0].AxisX.Interval = 5;
             form.chart1.ChartAreas[0].AxisX.Minimum = 0;
             form.chart1.ChartAreas[0].AxisX.Maximum = 255;
             int x = 0;
-            for (int i = 0; i < 255; i++)
+            for (int i = 0; i <= 255; i++)
             {
                 form.chart1.Series[0].Points.AddXY(x, brightness[i]);
                 x++;
