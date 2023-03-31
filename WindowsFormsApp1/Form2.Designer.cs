@@ -45,6 +45,17 @@ namespace WindowsFormsApp1
             this.layoutForThresholding = new System.Windows.Forms.TableLayoutPanel();
             this.makeThresholding = new System.Windows.Forms.Button();
             this.changeThresholding = new System.Windows.Forms.NumericUpDown();
+            this.layoutForUpContrast = new System.Windows.Forms.TableLayoutPanel();
+            this.upChangeContrastQ1 = new System.Windows.Forms.NumericUpDown();
+            this.upChangeContrastQ2 = new System.Windows.Forms.NumericUpDown();
+            this.makeUpContrast = new System.Windows.Forms.Button();
+            this.layoutForDownContrast = new System.Windows.Forms.TableLayoutPanel();
+            this.downChangeContrastQ1 = new System.Windows.Forms.NumericUpDown();
+            this.downChangeContrastQ2 = new System.Windows.Forms.NumericUpDown();
+            this.makeDownContrast = new System.Windows.Forms.Button();
+            this.layoutForGammaConversion = new System.Windows.Forms.TableLayoutPanel();
+            this.makeGammaConversion = new System.Windows.Forms.Button();
+            this.changeGammaConversion = new System.Windows.Forms.TextBox();
             this.applyButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -55,6 +66,13 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.changeThresholdNegative)).BeginInit();
             this.layoutForThresholding.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.changeThresholding)).BeginInit();
+            this.layoutForUpContrast.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.upChangeContrastQ1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upChangeContrastQ2)).BeginInit();
+            this.layoutForDownContrast.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.downChangeContrastQ1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downChangeContrastQ2)).BeginInit();
+            this.layoutForGammaConversion.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPictureBox
@@ -72,9 +90,9 @@ namespace WindowsFormsApp1
             this.makeGrayScale.AutoSize = true;
             this.makeGrayScale.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.makeGrayScale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.makeGrayScale.Location = new System.Drawing.Point(3, 291);
+            this.makeGrayScale.Location = new System.Drawing.Point(3, 411);
             this.makeGrayScale.Name = "makeGrayScale";
-            this.makeGrayScale.Size = new System.Drawing.Size(621, 24);
+            this.makeGrayScale.Size = new System.Drawing.Size(621, 29);
             this.makeGrayScale.TabIndex = 3;
             this.makeGrayScale.Text = "Make Gray-Scale";
             this.makeGrayScale.UseVisualStyleBackColor = true;
@@ -84,9 +102,9 @@ namespace WindowsFormsApp1
             this.makeBrightnessHistogram.AutoSize = true;
             this.makeBrightnessHistogram.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.makeBrightnessHistogram.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.makeBrightnessHistogram.Location = new System.Drawing.Point(3, 191);
+            this.makeBrightnessHistogram.Location = new System.Drawing.Point(3, 201);
             this.makeBrightnessHistogram.Name = "makeBrightnessHistogram";
-            this.makeBrightnessHistogram.Size = new System.Drawing.Size(621, 24);
+            this.makeBrightnessHistogram.Size = new System.Drawing.Size(621, 29);
             this.makeBrightnessHistogram.TabIndex = 5;
             this.makeBrightnessHistogram.Text = "Make Brightness-Histogram";
             this.makeBrightnessHistogram.UseVisualStyleBackColor = true;
@@ -105,9 +123,9 @@ namespace WindowsFormsApp1
             // 
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Location = new System.Drawing.Point(3, 351);
+            this.button1.Location = new System.Drawing.Point(3, 481);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(621, 26);
+            this.button1.Size = new System.Drawing.Size(621, 65);
             this.button1.TabIndex = 1;
             this.button1.Text = "Close Window";
             this.button1.UseVisualStyleBackColor = true;
@@ -118,9 +136,9 @@ namespace WindowsFormsApp1
             this.deleteButton.AutoSize = true;
             this.deleteButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.deleteButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deleteButton.Location = new System.Drawing.Point(3, 126);
+            this.deleteButton.Location = new System.Drawing.Point(3, 131);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(621, 24);
+            this.deleteButton.Size = new System.Drawing.Size(621, 29);
             this.deleteButton.TabIndex = 0;
             this.deleteButton.Text = "Delete image";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -138,26 +156,31 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Controls.Add(this.makeBrightnessHistogram, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.layoutForThresholdNegative, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.layoutForThresholding, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForUpContrast, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForDownContrast, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForGammaConversion, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 12);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 411);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 578);
             this.tableLayoutPanel1.TabIndex = 1;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // zoomBar
             // 
@@ -166,7 +189,7 @@ namespace WindowsFormsApp1
             this.zoomBar.Maximum = 1200;
             this.zoomBar.Minimum = 1;
             this.zoomBar.Name = "zoomBar";
-            this.zoomBar.Size = new System.Drawing.Size(621, 24);
+            this.zoomBar.Size = new System.Drawing.Size(621, 29);
             this.zoomBar.TabIndex = 6;
             this.zoomBar.Value = 1;
             this.zoomBar.Scroll += new System.EventHandler(this.zoomBar_Scroll);
@@ -181,7 +204,7 @@ namespace WindowsFormsApp1
             this.layoutForChangeBrightness.Controls.Add(this.changeBrightness, 0, 0);
             this.layoutForChangeBrightness.Controls.Add(this.changeBrightnessNumeric, 1, 0);
             this.layoutForChangeBrightness.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutForChangeBrightness.Location = new System.Drawing.Point(3, 156);
+            this.layoutForChangeBrightness.Location = new System.Drawing.Point(3, 166);
             this.layoutForChangeBrightness.Name = "layoutForChangeBrightness";
             this.layoutForChangeBrightness.RowCount = 1;
             this.layoutForChangeBrightness.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
@@ -215,7 +238,7 @@ namespace WindowsFormsApp1
             this.layoutForThresholdNegative.Controls.Add(this.makeThresholdNegative, 0, 0);
             this.layoutForThresholdNegative.Controls.Add(this.changeThresholdNegative, 1, 0);
             this.layoutForThresholdNegative.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutForThresholdNegative.Location = new System.Drawing.Point(3, 221);
+            this.layoutForThresholdNegative.Location = new System.Drawing.Point(3, 236);
             this.layoutForThresholdNegative.Name = "layoutForThresholdNegative";
             this.layoutForThresholdNegative.RowCount = 1;
             this.layoutForThresholdNegative.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
@@ -258,7 +281,7 @@ namespace WindowsFormsApp1
             this.layoutForThresholding.Controls.Add(this.makeThresholding, 0, 0);
             this.layoutForThresholding.Controls.Add(this.changeThresholding, 1, 0);
             this.layoutForThresholding.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutForThresholding.Location = new System.Drawing.Point(3, 256);
+            this.layoutForThresholding.Location = new System.Drawing.Point(3, 271);
             this.layoutForThresholding.Name = "layoutForThresholding";
             this.layoutForThresholding.RowCount = 1;
             this.layoutForThresholding.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
@@ -291,14 +314,173 @@ namespace WindowsFormsApp1
             this.changeThresholding.Size = new System.Drawing.Size(305, 20);
             this.changeThresholding.TabIndex = 6;
             // 
+            // layoutForUpContrast
+            // 
+            this.layoutForUpContrast.AutoSize = true;
+            this.layoutForUpContrast.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.layoutForUpContrast.ColumnCount = 3;
+            this.layoutForUpContrast.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.layoutForUpContrast.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForUpContrast.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForUpContrast.Controls.Add(this.upChangeContrastQ1, 1, 0);
+            this.layoutForUpContrast.Controls.Add(this.upChangeContrastQ2, 2, 0);
+            this.layoutForUpContrast.Controls.Add(this.makeUpContrast, 0, 0);
+            this.layoutForUpContrast.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutForUpContrast.Location = new System.Drawing.Point(3, 306);
+            this.layoutForUpContrast.Name = "layoutForUpContrast";
+            this.layoutForUpContrast.RowCount = 1;
+            this.layoutForUpContrast.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.layoutForUpContrast.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.layoutForUpContrast.Size = new System.Drawing.Size(621, 29);
+            this.layoutForUpContrast.TabIndex = 2;
+            // 
+            // upChangeContrastQ1
+            // 
+            this.upChangeContrastQ1.Location = new System.Drawing.Point(153, 3);
+            this.upChangeContrastQ1.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.upChangeContrastQ1.Minimum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            -2147483648});
+            this.upChangeContrastQ1.Name = "upChangeContrastQ1";
+            this.upChangeContrastQ1.Size = new System.Drawing.Size(229, 20);
+            this.upChangeContrastQ1.TabIndex = 7;
+            // 
+            // upChangeContrastQ2
+            // 
+            this.upChangeContrastQ2.Location = new System.Drawing.Point(388, 3);
+            this.upChangeContrastQ2.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.upChangeContrastQ2.Minimum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            -2147483648});
+            this.upChangeContrastQ2.Name = "upChangeContrastQ2";
+            this.upChangeContrastQ2.Size = new System.Drawing.Size(229, 20);
+            this.upChangeContrastQ2.TabIndex = 8;
+            // 
+            // makeUpContrast
+            // 
+            this.makeUpContrast.Location = new System.Drawing.Point(3, 3);
+            this.makeUpContrast.Name = "makeUpContrast";
+            this.makeUpContrast.Size = new System.Drawing.Size(144, 23);
+            this.makeUpContrast.TabIndex = 5;
+            this.makeUpContrast.Text = "Increase the Contrast";
+            this.makeUpContrast.UseVisualStyleBackColor = true;
+            // 
+            // layoutForDownContrast
+            // 
+            this.layoutForDownContrast.AutoSize = true;
+            this.layoutForDownContrast.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.layoutForDownContrast.ColumnCount = 3;
+            this.layoutForDownContrast.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.layoutForDownContrast.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForDownContrast.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForDownContrast.Controls.Add(this.downChangeContrastQ1, 1, 0);
+            this.layoutForDownContrast.Controls.Add(this.downChangeContrastQ2, 2, 0);
+            this.layoutForDownContrast.Controls.Add(this.makeDownContrast, 0, 0);
+            this.layoutForDownContrast.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutForDownContrast.Location = new System.Drawing.Point(3, 341);
+            this.layoutForDownContrast.Name = "layoutForDownContrast";
+            this.layoutForDownContrast.RowCount = 1;
+            this.layoutForDownContrast.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.layoutForDownContrast.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.layoutForDownContrast.Size = new System.Drawing.Size(621, 29);
+            this.layoutForDownContrast.TabIndex = 2;
+            // 
+            // downChangeContrastQ1
+            // 
+            this.downChangeContrastQ1.Location = new System.Drawing.Point(153, 3);
+            this.downChangeContrastQ1.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.downChangeContrastQ1.Minimum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            -2147483648});
+            this.downChangeContrastQ1.Name = "downChangeContrastQ1";
+            this.downChangeContrastQ1.Size = new System.Drawing.Size(229, 20);
+            this.downChangeContrastQ1.TabIndex = 7;
+            // 
+            // downChangeContrastQ2
+            // 
+            this.downChangeContrastQ2.Location = new System.Drawing.Point(388, 3);
+            this.downChangeContrastQ2.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.downChangeContrastQ2.Minimum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            -2147483648});
+            this.downChangeContrastQ2.Name = "downChangeContrastQ2";
+            this.downChangeContrastQ2.Size = new System.Drawing.Size(229, 20);
+            this.downChangeContrastQ2.TabIndex = 8;
+            // 
+            // makeDownContrast
+            // 
+            this.makeDownContrast.Location = new System.Drawing.Point(3, 3);
+            this.makeDownContrast.Name = "makeDownContrast";
+            this.makeDownContrast.Size = new System.Drawing.Size(144, 23);
+            this.makeDownContrast.TabIndex = 5;
+            this.makeDownContrast.Text = "Decrease the Contrast";
+            this.makeDownContrast.UseVisualStyleBackColor = true;
+            // 
+            // layoutForGammaConversion
+            // 
+            this.layoutForGammaConversion.AutoSize = true;
+            this.layoutForGammaConversion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.layoutForGammaConversion.ColumnCount = 2;
+            this.layoutForGammaConversion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForGammaConversion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForGammaConversion.Controls.Add(this.makeGammaConversion, 0, 0);
+            this.layoutForGammaConversion.Controls.Add(this.changeGammaConversion, 1, 0);
+            this.layoutForGammaConversion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutForGammaConversion.Location = new System.Drawing.Point(3, 376);
+            this.layoutForGammaConversion.Name = "layoutForGammaConversion";
+            this.layoutForGammaConversion.RowCount = 1;
+            this.layoutForGammaConversion.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.layoutForGammaConversion.Size = new System.Drawing.Size(621, 29);
+            this.layoutForGammaConversion.TabIndex = 2;
+            // 
+            // makeGammaConversion
+            // 
+            this.makeGammaConversion.Location = new System.Drawing.Point(3, 3);
+            this.makeGammaConversion.Name = "makeGammaConversion";
+            this.makeGammaConversion.Size = new System.Drawing.Size(304, 23);
+            this.makeGammaConversion.TabIndex = 0;
+            this.makeGammaConversion.Text = "Increase gamma conversion";
+            this.makeGammaConversion.UseVisualStyleBackColor = true;
+            // 
+            // changeGammaConversion
+            // 
+            this.changeGammaConversion.Location = new System.Drawing.Point(313, 3);
+            this.changeGammaConversion.Name = "changeGammaConversion";
+            this.changeGammaConversion.Size = new System.Drawing.Size(305, 20);
+            this.changeGammaConversion.TabIndex = 0;
+            // 
             // applyButton
             // 
             this.applyButton.AutoSize = true;
             this.applyButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.applyButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.applyButton.Location = new System.Drawing.Point(3, 321);
+            this.applyButton.Location = new System.Drawing.Point(3, 446);
             this.applyButton.Name = "applyButton";
-            this.applyButton.Size = new System.Drawing.Size(621, 24);
+            this.applyButton.Size = new System.Drawing.Size(621, 29);
             this.applyButton.TabIndex = 5;
             this.applyButton.Text = "Apply Changes";
             this.applyButton.UseVisualStyleBackColor = true;
@@ -308,7 +490,7 @@ namespace WindowsFormsApp1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(627, 411);
+            this.ClientSize = new System.Drawing.Size(627, 578);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form2";
@@ -323,6 +505,14 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.changeThresholdNegative)).EndInit();
             this.layoutForThresholding.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.changeThresholding)).EndInit();
+            this.layoutForUpContrast.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.upChangeContrastQ1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upChangeContrastQ2)).EndInit();
+            this.layoutForDownContrast.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.downChangeContrastQ1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downChangeContrastQ2)).EndInit();
+            this.layoutForGammaConversion.ResumeLayout(false);
+            this.layoutForGammaConversion.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,5 +540,19 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TableLayoutPanel layoutForThresholding;
         public System.Windows.Forms.Button makeThresholding;
         public System.Windows.Forms.NumericUpDown changeThresholding;
+
+        private System.Windows.Forms.TableLayoutPanel layoutForUpContrast;
+        public System.Windows.Forms.Button makeUpContrast;
+        public System.Windows.Forms.NumericUpDown upChangeContrastQ1;
+        public System.Windows.Forms.NumericUpDown upChangeContrastQ2;
+
+        private System.Windows.Forms.TableLayoutPanel layoutForDownContrast;
+        public System.Windows.Forms.Button makeDownContrast;
+        public System.Windows.Forms.NumericUpDown downChangeContrastQ1;
+        public System.Windows.Forms.NumericUpDown downChangeContrastQ2;
+
+        private System.Windows.Forms.TableLayoutPanel layoutForGammaConversion;
+        public System.Windows.Forms.Button makeGammaConversion;
+        public System.Windows.Forms.TextBox changeGammaConversion;
     }
 }

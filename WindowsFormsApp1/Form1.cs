@@ -66,7 +66,7 @@ namespace WindowsFormsApp1
 
         private Bitmap Thresholding(Bitmap bmp, int p)
         {
-            Func<int, int, int> S = (int Color, int Brightness) =>
+            Func<int, int> S = (int Brightness) =>
             {
                 if (Brightness >= p) return 255;
                 else return 0;
@@ -80,9 +80,59 @@ namespace WindowsFormsApp1
                     int brightness = (int)(0.3 * color.R + 0.59 * color.G + 0.11 * color.B);
                     bmp.SetPixel(i, j,
                         Color.FromArgb(
-                            S(color.R, brightness),
-                            S(color.G, brightness),
-                            S(color.B, brightness))
+                            S(brightness),
+                            S(brightness),
+                            S(brightness))
+                        );
+                }
+            }
+            return bmp;
+        }
+
+        private Bitmap UpChangeContrast(Bitmap bmp, int Q1, int Q2)
+        {
+            if (Q1 == Q2) return bmp;
+            Func<int, int> S = (int Color) =>
+            {
+                if (Color < Q1) return 0;
+                else if (Color > Q2) return 255;
+                else return 255 * (Color - Q1) / (Q2 - Q1);
+            };
+
+            for (int i = 0; i < bmp.Width; i++)
+            {
+                for (int j = 0; j < bmp.Height; j++)
+                {
+                    Color color = bmp.GetPixel(i, j);
+                    bmp.SetPixel(i, j,
+                        Color.FromArgb(
+                            S(color.R),
+                            S(color.G),
+                            S(color.B))
+                        );
+                }
+            }
+            return bmp;
+        }
+
+        private Bitmap DownChangeContrast(Bitmap bmp, int Q1, int Q2)
+        {
+            if (Q1 == Q2) return bmp;
+            Func<int, int> S = (int Color) =>
+            {
+                return Q1 + Color * (Q2 - Q1) / 255;
+            };
+
+            for (int i = 0; i < bmp.Width; i++)
+            {
+                for (int j = 0; j < bmp.Height; j++)
+                {
+                    Color color = bmp.GetPixel(i, j);
+                    bmp.SetPixel(i, j,
+                        Color.FromArgb(
+                            S(color.R),
+                            S(color.G),
+                            S(color.B))
                         );
                 }
             }
@@ -108,6 +158,29 @@ namespace WindowsFormsApp1
                             S(color.R, value),
                             S(color.G, value),
                             S(color.B, value))
+                        );
+                }
+            }
+            return bmp;
+        }
+
+        private Bitmap GammaConversion(Bitmap bmp, double gamma)
+        {
+            Func<int, int> S = (int Color) =>
+            {
+                return (int)(255 * Math.Pow(Color / 255.0, gamma));
+            };
+
+            for (int i = 0; i < bmp.Width; i++)
+            {
+                for (int j = 0; j < bmp.Height; j++)
+                {
+                    Color color = bmp.GetPixel(i, j);
+                    bmp.SetPixel(i, j,
+                        Color.FromArgb(
+                            S(color.R),
+                            S(color.G),
+                            S(color.B))
                         );
                 }
             }
@@ -149,6 +222,28 @@ namespace WindowsFormsApp1
             {
                 Bitmap bmp = new Bitmap(form.mainPictureBox.Image);
                 form.mainPictureBox.Image = Thresholding(bmp, (int)form.changeThresholding.Value);
+            };
+
+            form.makeGammaConversion.Click += (a, b) =>
+            {
+                try
+                {
+                    Bitmap bmp = new Bitmap(form.mainPictureBox.Image);
+                    form.mainPictureBox.Image = GammaConversion(bmp, double.Parse(form.changeGammaConversion.Text.Replace('.', ','), System.Globalization.NumberStyles.Float));
+                }
+                catch {}
+            };
+
+            form.makeUpContrast.Click += (a, b) =>
+            {
+                Bitmap bmp = new Bitmap(form.mainPictureBox.Image);
+                form.mainPictureBox.Image = UpChangeContrast(bmp, (int)form.upChangeContrastQ1.Value, (int)form.upChangeContrastQ2.Value);
+            };
+
+            form.makeDownContrast.Click += (a, b) =>
+            {
+                Bitmap bmp = new Bitmap(form.mainPictureBox.Image);
+                form.mainPictureBox.Image = DownChangeContrast(bmp, (int)form.downChangeContrastQ1.Value, (int)form.downChangeContrastQ2.Value);
             };
 
             form.makeGrayScale.Click += (a, b) => {
