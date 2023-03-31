@@ -56,6 +56,9 @@ namespace WindowsFormsApp1
             this.layoutForGammaConversion = new System.Windows.Forms.TableLayoutPanel();
             this.makeGammaConversion = new System.Windows.Forms.Button();
             this.changeGammaConversion = new System.Windows.Forms.TextBox();
+            this.layoutForQuantization = new System.Windows.Forms.TableLayoutPanel();
+            this.makeQuantization = new System.Windows.Forms.Button();
+            this.changeQuantization = new System.Windows.Forms.NumericUpDown();
             this.makePseudoColor = new System.Windows.Forms.Button();
             this.applyButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
@@ -74,6 +77,8 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.downChangeContrastQ1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.downChangeContrastQ2)).BeginInit();
             this.layoutForGammaConversion.SuspendLayout();
+            this.layoutForQuantization.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.changeQuantization)).BeginInit();
             this.SuspendLayout();
             // 
             // mainPictureBox
@@ -91,7 +96,7 @@ namespace WindowsFormsApp1
             this.makeGrayScale.AutoSize = true;
             this.makeGrayScale.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.makeGrayScale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.makeGrayScale.Location = new System.Drawing.Point(3, 446);
+            this.makeGrayScale.Location = new System.Drawing.Point(3, 481);
             this.makeGrayScale.Name = "makeGrayScale";
             this.makeGrayScale.Size = new System.Drawing.Size(621, 29);
             this.makeGrayScale.TabIndex = 3;
@@ -124,7 +129,7 @@ namespace WindowsFormsApp1
             // 
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Location = new System.Drawing.Point(3, 516);
+            this.button1.Location = new System.Drawing.Point(3, 551);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(621, 65);
             this.button1.TabIndex = 1;
@@ -160,10 +165,11 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Controls.Add(this.layoutForUpContrast, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.layoutForDownContrast, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.layoutForGammaConversion, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.makePseudoColor, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 11);
-            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 12);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 13);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForQuantization, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.makePseudoColor, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 12);
+            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 13);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 14);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -182,6 +188,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 633);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -476,12 +483,61 @@ namespace WindowsFormsApp1
             this.changeGammaConversion.Size = new System.Drawing.Size(305, 20);
             this.changeGammaConversion.TabIndex = 0;
             // 
+            // layoutForQuantization
+            // 
+            this.layoutForQuantization.AutoSize = true;
+            this.layoutForQuantization.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.layoutForQuantization.ColumnCount = 2;
+            this.layoutForQuantization.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForQuantization.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutForQuantization.Controls.Add(this.makeQuantization, 0, 0);
+            this.layoutForQuantization.Controls.Add(this.changeQuantization, 1, 0);
+            this.layoutForQuantization.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutForQuantization.Location = new System.Drawing.Point(3, 411);
+            this.layoutForQuantization.Name = "layoutForQuantization";
+            this.layoutForQuantization.RowCount = 1;
+            this.layoutForQuantization.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.layoutForQuantization.Size = new System.Drawing.Size(621, 29);
+            this.layoutForQuantization.TabIndex = 2;
+            // 
+            // makeQuantization
+            // 
+            this.makeQuantization.Location = new System.Drawing.Point(3, 3);
+            this.makeQuantization.Name = "makeQuantization";
+            this.makeQuantization.Size = new System.Drawing.Size(304, 23);
+            this.makeQuantization.TabIndex = 5;
+            this.makeQuantization.Text = "Make Quantization";
+            this.makeQuantization.UseVisualStyleBackColor = true;
+            this.makeQuantization.Click += new System.EventHandler(this.makeQuantization_Click);
+            // 
+            // changeQuantization
+            // 
+            this.changeQuantization.Location = new System.Drawing.Point(313, 3);
+            this.changeQuantization.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.changeQuantization.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.changeQuantization.Name = "changeQuantization";
+            this.changeQuantization.Size = new System.Drawing.Size(305, 20);
+            this.changeQuantization.TabIndex = 6;
+            this.changeQuantization.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // makePseudoColor
             // 
             this.makePseudoColor.AutoSize = true;
             this.makePseudoColor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.makePseudoColor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.makePseudoColor.Location = new System.Drawing.Point(3, 411);
+            this.makePseudoColor.Location = new System.Drawing.Point(3, 446);
             this.makePseudoColor.Name = "makePseudoColor";
             this.makePseudoColor.Size = new System.Drawing.Size(621, 29);
             this.makePseudoColor.TabIndex = 3;
@@ -494,7 +550,7 @@ namespace WindowsFormsApp1
             this.applyButton.AutoSize = true;
             this.applyButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.applyButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.applyButton.Location = new System.Drawing.Point(3, 481);
+            this.applyButton.Location = new System.Drawing.Point(3, 516);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(621, 29);
             this.applyButton.TabIndex = 5;
@@ -529,6 +585,8 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.downChangeContrastQ2)).EndInit();
             this.layoutForGammaConversion.ResumeLayout(false);
             this.layoutForGammaConversion.PerformLayout();
+            this.layoutForQuantization.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.changeQuantization)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -572,5 +630,9 @@ namespace WindowsFormsApp1
         public System.Windows.Forms.TextBox changeGammaConversion;
 
         public System.Windows.Forms.Button makePseudoColor;
+
+        private System.Windows.Forms.TableLayoutPanel layoutForQuantization;
+        public System.Windows.Forms.Button makeQuantization;
+        public System.Windows.Forms.NumericUpDown changeQuantization;
     }
 }

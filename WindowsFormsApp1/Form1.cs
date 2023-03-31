@@ -64,6 +64,49 @@ namespace WindowsFormsApp1
             return bmp;
         }
 
+        public static Bitmap MakeQuantization(Bitmap bmp, int N)
+        {
+            if (255.0 / N <= 1.0) return bmp;
+
+            Func<Color, Color> S = (Color color) =>
+            {
+                int quant = 255 / N;
+                int k_r = (int)color.R / quant;
+                int k_g = (int)color.G / quant;
+                int k_b = (int)color.B / quant;
+
+                int av_r = (k_r * quant + (k_r + 1) * quant) / 2;
+                int av_g = (k_g * quant + (k_g + 1) * quant) / 2;
+                int av_b = (k_b * quant + (k_b + 1) * quant) / 2;
+
+                if (av_r > 255)
+                    av_r = 255;
+                if (av_g > 255)
+                    av_g = 255;
+                if (av_b > 255)
+                    av_b = 255;
+
+                if (av_r < 0)
+                    av_r = 0;
+                if (av_g < 0)
+                    av_g = 0;
+                if (av_b < 0)
+                    av_b = 0;
+
+                return Color.FromArgb(av_r, av_g, av_b);
+            };
+
+            for (int i = 0; i < bmp.Width; i++)
+            {
+                for (int j = 0; j < bmp.Height; j++)
+                {
+                    Color color = bmp.GetPixel(i, j);
+                    bmp.SetPixel(i, j, S(color));
+                }
+            }
+            return bmp;
+        }
+
         public static Bitmap MakePseudoColor(Bitmap bmp, int[] intervals, Color[] colors)
         {
             Func<int, Color> S = (int gray) =>

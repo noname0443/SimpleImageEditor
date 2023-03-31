@@ -95,5 +95,10 @@ namespace WindowsFormsApp1
             form.TopLevel = true;
             form.TopMost = true;
         }
+
+        private void makeQuantization_Click(object sender, EventArgs e)
+        {
+            this.mainPictureBox.Image = Form1.MakeQuantization(new Bitmap(this.mainPictureBox.Image), (int)this.changeQuantization.Value);
+        }
     }
 }
