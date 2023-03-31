@@ -63,6 +63,28 @@ namespace WindowsFormsApp1
             }
             return bmp;
         }
+        public static Bitmap MakeSolarization(Bitmap bmp)
+        {
+            Func<int, int> parabola = (int x) =>
+            {
+                return (int)(-4.0 / 255.0 * x * x) + 4 * x;
+            };
+
+            Func<Color, Color> S = (Color color) =>
+            {
+                return Color.FromArgb(parabola(color.R), parabola(color.G), parabola(color.B));
+            };
+
+            for (int i = 0; i < bmp.Width; i++)
+            {
+                for (int j = 0; j < bmp.Height; j++)
+                {
+                    Color color = bmp.GetPixel(i, j);
+                    bmp.SetPixel(i, j, S(color));
+                }
+            }
+            return bmp;
+        }
 
         public static Bitmap MakeQuantization(Bitmap bmp, int N)
         {

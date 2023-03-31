@@ -100,5 +100,10 @@ namespace WindowsFormsApp1
         {
             this.mainPictureBox.Image = Form1.MakeQuantization(new Bitmap(this.mainPictureBox.Image), (int)this.changeQuantization.Value);
         }
+
+        private void makeSolarization_Click(object sender, EventArgs e)
+        {
+            this.mainPictureBox.Image = Form1.MakeSolarization(new Bitmap(this.mainPictureBox.Image));
+        }
     }
 }

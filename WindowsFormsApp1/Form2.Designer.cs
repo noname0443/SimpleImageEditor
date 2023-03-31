@@ -60,6 +60,7 @@ namespace WindowsFormsApp1
             this.makeQuantization = new System.Windows.Forms.Button();
             this.changeQuantization = new System.Windows.Forms.NumericUpDown();
             this.makePseudoColor = new System.Windows.Forms.Button();
+            this.makeSolarization = new System.Windows.Forms.Button();
             this.applyButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -96,7 +97,7 @@ namespace WindowsFormsApp1
             this.makeGrayScale.AutoSize = true;
             this.makeGrayScale.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.makeGrayScale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.makeGrayScale.Location = new System.Drawing.Point(3, 481);
+            this.makeGrayScale.Location = new System.Drawing.Point(3, 516);
             this.makeGrayScale.Name = "makeGrayScale";
             this.makeGrayScale.Size = new System.Drawing.Size(621, 29);
             this.makeGrayScale.TabIndex = 3;
@@ -129,9 +130,9 @@ namespace WindowsFormsApp1
             // 
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Location = new System.Drawing.Point(3, 551);
+            this.button1.Location = new System.Drawing.Point(3, 586);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(621, 65);
+            this.button1.Size = new System.Drawing.Size(621, 27);
             this.button1.TabIndex = 1;
             this.button1.Text = "Close Window";
             this.button1.UseVisualStyleBackColor = true;
@@ -167,9 +168,10 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Controls.Add(this.layoutForGammaConversion, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.layoutForQuantization, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.makePseudoColor, 0, 11);
-            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 12);
-            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 13);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 14);
+            this.tableLayoutPanel1.Controls.Add(this.makeSolarization, 0, 12);
+            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 13);
+            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 14);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 15);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -188,8 +190,9 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 633);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 757);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // zoomBar
@@ -545,12 +548,22 @@ namespace WindowsFormsApp1
             this.makePseudoColor.UseVisualStyleBackColor = true;
             this.makePseudoColor.Click += new System.EventHandler(this.makePseudoColor_Click);
             // 
+            // makeSolarization
+            // 
+            this.makeSolarization.Location = new System.Drawing.Point(3, 481);
+            this.makeSolarization.Name = "makeSolarization";
+            this.makeSolarization.Size = new System.Drawing.Size(621, 29);
+            this.makeSolarization.TabIndex = 5;
+            this.makeSolarization.Text = "Make Solarization";
+            this.makeSolarization.UseVisualStyleBackColor = true;
+            this.makeSolarization.Click += new System.EventHandler(this.makeSolarization_Click);
+            // 
             // applyButton
             // 
             this.applyButton.AutoSize = true;
             this.applyButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.applyButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.applyButton.Location = new System.Drawing.Point(3, 516);
+            this.applyButton.Location = new System.Drawing.Point(3, 551);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(621, 29);
             this.applyButton.TabIndex = 5;
@@ -562,7 +575,7 @@ namespace WindowsFormsApp1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(627, 633);
+            this.ClientSize = new System.Drawing.Size(627, 757);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form2";
@@ -634,5 +647,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TableLayoutPanel layoutForQuantization;
         public System.Windows.Forms.Button makeQuantization;
         public System.Windows.Forms.NumericUpDown changeQuantization;
+
+        public System.Windows.Forms.Button makeSolarization;
     }
 }
