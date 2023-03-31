@@ -56,6 +56,7 @@ namespace WindowsFormsApp1
             this.layoutForGammaConversion = new System.Windows.Forms.TableLayoutPanel();
             this.makeGammaConversion = new System.Windows.Forms.Button();
             this.changeGammaConversion = new System.Windows.Forms.TextBox();
+            this.makePseudoColor = new System.Windows.Forms.Button();
             this.applyButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -90,7 +91,7 @@ namespace WindowsFormsApp1
             this.makeGrayScale.AutoSize = true;
             this.makeGrayScale.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.makeGrayScale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.makeGrayScale.Location = new System.Drawing.Point(3, 411);
+            this.makeGrayScale.Location = new System.Drawing.Point(3, 446);
             this.makeGrayScale.Name = "makeGrayScale";
             this.makeGrayScale.Size = new System.Drawing.Size(621, 29);
             this.makeGrayScale.TabIndex = 3;
@@ -123,7 +124,7 @@ namespace WindowsFormsApp1
             // 
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Location = new System.Drawing.Point(3, 481);
+            this.button1.Location = new System.Drawing.Point(3, 516);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(621, 65);
             this.button1.TabIndex = 1;
@@ -159,9 +160,10 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Controls.Add(this.layoutForUpContrast, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.layoutForDownContrast, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.layoutForGammaConversion, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 11);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 12);
+            this.tableLayoutPanel1.Controls.Add(this.makePseudoColor, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 12);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 13);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -179,7 +181,8 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 578);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 633);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // zoomBar
@@ -473,12 +476,25 @@ namespace WindowsFormsApp1
             this.changeGammaConversion.Size = new System.Drawing.Size(305, 20);
             this.changeGammaConversion.TabIndex = 0;
             // 
+            // makePseudoColor
+            // 
+            this.makePseudoColor.AutoSize = true;
+            this.makePseudoColor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.makePseudoColor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.makePseudoColor.Location = new System.Drawing.Point(3, 411);
+            this.makePseudoColor.Name = "makePseudoColor";
+            this.makePseudoColor.Size = new System.Drawing.Size(621, 29);
+            this.makePseudoColor.TabIndex = 3;
+            this.makePseudoColor.Text = "Make Pseudo Color";
+            this.makePseudoColor.UseVisualStyleBackColor = true;
+            this.makePseudoColor.Click += new System.EventHandler(this.makePseudoColor_Click);
+            // 
             // applyButton
             // 
             this.applyButton.AutoSize = true;
             this.applyButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.applyButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.applyButton.Location = new System.Drawing.Point(3, 446);
+            this.applyButton.Location = new System.Drawing.Point(3, 481);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(621, 29);
             this.applyButton.TabIndex = 5;
@@ -490,7 +506,7 @@ namespace WindowsFormsApp1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(627, 578);
+            this.ClientSize = new System.Drawing.Size(627, 633);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form2";
@@ -554,5 +570,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TableLayoutPanel layoutForGammaConversion;
         public System.Windows.Forms.Button makeGammaConversion;
         public System.Windows.Forms.TextBox changeGammaConversion;
+
+        public System.Windows.Forms.Button makePseudoColor;
     }
 }

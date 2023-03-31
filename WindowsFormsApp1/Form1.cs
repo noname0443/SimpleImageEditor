@@ -64,6 +64,32 @@ namespace WindowsFormsApp1
             return bmp;
         }
 
+        public static Bitmap MakePseudoColor(Bitmap bmp, int[] intervals, Color[] colors)
+        {
+            Func<int, Color> S = (int gray) =>
+            {
+                for (int i = 0; i < intervals.Length; i++)
+                {
+                    if (gray < intervals[i])
+                    {
+                        return colors[i];
+                    }
+                }
+                return colors[colors.Length - 1];
+            };
+
+            for (int i = 0; i < bmp.Width; i++)
+            {
+                for (int j = 0; j < bmp.Height; j++)
+                {
+                    Color color = bmp.GetPixel(i, j);
+                    int brightness = (int)(0.3 * color.R + 0.59 * color.G + 0.11 * color.B);
+                    bmp.SetPixel(i, j, S(brightness));
+                }
+            }
+            return bmp;
+        }
+
         private Bitmap Thresholding(Bitmap bmp, int p)
         {
             Func<int, int> S = (int Brightness) =>

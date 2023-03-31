@@ -61,5 +61,39 @@ namespace WindowsFormsApp1
                 x++;
             }
         }
+
+        private void makePseudoColor_Click(object sender, EventArgs e)
+        {
+            PseudoСoloring form = new PseudoСoloring();
+            form.Show();
+            form.CloseButton.Click += (a, b) => {
+                this.TopLevel = true;
+                this.TopMost = true;
+                form.Close();
+            };
+            form.AcceptButton.Click += (a, b) => {
+                this.TopLevel = true;
+                this.TopMost = true;
+
+                int colorCount = form.flowLayoutPanel1.Controls.Count;
+
+                int[] intervals = new int[colorCount - 1];
+                Color[] colors = new Color[colorCount];
+
+                for(int i = 0; i < colorCount - 1; i++)
+                {
+                    intervals[i] = (int)((NumericUpDown)((TableLayoutPanel)form.flowLayoutPanel1.Controls[i]).Controls[1]).Value;
+                    colors[i] = ((Button)((TableLayoutPanel)form.flowLayoutPanel1.Controls[i]).Controls[0]).BackColor;
+                }
+                colors[colorCount - 1] = ((Button)((TableLayoutPanel)form.flowLayoutPanel1.Controls[colorCount - 1]).Controls[0]).BackColor;
+
+                this.mainPictureBox.Image = Form1.MakePseudoColor(new Bitmap(this.mainPictureBox.Image), intervals, colors);
+                form.Close();
+            };
+            form.ControlBox = false;
+            this.TopLevel = false;
+            form.TopLevel = true;
+            form.TopMost = true;
+        }
     }
 }
