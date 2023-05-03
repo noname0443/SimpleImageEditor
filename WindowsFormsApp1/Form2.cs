@@ -105,5 +105,15 @@ namespace WindowsFormsApp1
         {
             this.mainPictureBox.Image = Form1.MakeSolarization(new Bitmap(this.mainPictureBox.Image));
         }
+
+        private void makeSmooth_Click(object sender, EventArgs e)
+        {
+            this.mainPictureBox.Image = Form1.makeSmooth(new Bitmap(this.mainPictureBox.Image));
+        }
+
+        private void makeSharp_Click(object sender, EventArgs e)
+        {
+            this.mainPictureBox.Image = Form1.makeSharp(new Bitmap(this.mainPictureBox.Image));
+        }
     }
 }

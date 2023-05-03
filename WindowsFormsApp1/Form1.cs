@@ -12,6 +12,40 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        private static int Normalize(int value)
+        {
+            return value >= 0 ? value <= 255 ? value : 255 : 0;
+        }
+
+        private static (int, int, int) fromColor(Color color)
+        {
+            return (color.R, color.G, color.B);
+        }
+
+        private static Color toColor((int, int, int) value)
+        {
+            return Color.FromArgb(
+                Normalize(value.Item1),
+                Normalize(value.Item2),
+                Normalize(value.Item3)
+            );
+        }
+
+        private static (int, int, int) Mult((int, int, int) value, double c)
+        {
+            return ((int)((double)value.Item1 * c),
+                (int)((double)value.Item2 * c),
+                (int)((double)value.Item3 * c)
+            );
+        }
+
+        private static (int, int, int) Sum((int, int, int) a, (int, int, int) b)
+        {
+            return (a.Item1 + b.Item1,
+                a.Item2 + b.Item2,
+                a.Item3 + b.Item3
+                );
+        }
         public Form1()
         {
             InitializeComponent();
@@ -37,6 +71,56 @@ namespace WindowsFormsApp1
                 }
             }
             return bmp;
+        }
+
+        public static Bitmap makeSmooth(Bitmap bmp)
+        {
+            Bitmap bmp2 = (Bitmap)bmp.Clone();
+            for (int i = 1; i < bmp.Width - 1; i++)
+            {
+                for (int j = 1; j < bmp.Height - 1; j++)
+                {
+                    Color sourceColor = bmp.GetPixel(i - 1, j - 1);
+                    (int, int, int) result = (sourceColor.R, sourceColor.G, sourceColor.B);
+                    result = Mult(result, 1.0 / 9.0);
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i - 1, j)), 1.0 / 9.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i + 1, j + 1)), 1.0 / 9.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i, j - 1)), 1.0 / 9.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i, j)), 1.0 / 9.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i, j + 1)), 1.0 / 9.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i + 1, j - 1)), 1.0 / 9.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i + 1, j)), 1.0 / 9.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i + 1, j + 1)), 1.0 / 9.0));
+
+                    bmp2.SetPixel(i, j, toColor(result));
+                }
+            }
+            return bmp2;
+        }
+
+        public static Bitmap makeSharp(Bitmap bmp)
+        {
+            Bitmap bmp2 = (Bitmap)bmp.Clone();
+            for (int i = 1; i < bmp.Width - 1; i++)
+            {
+                for (int j = 1; j < bmp.Height - 1; j++)
+                {
+                    Color sourceColor = bmp.GetPixel(i - 1, j - 1);
+                    (int, int, int) result = (sourceColor.R, sourceColor.G, sourceColor.B);
+                    result = Mult(result, -1.0);
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i - 1, j)), -1.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i + 1, j + 1)), -1.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i, j - 1)), -1.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i, j)), 9.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i, j + 1)), -1.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i + 1, j - 1)), -1.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i + 1, j)), -1.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i + 1, j + 1)), -1.0));
+
+                    bmp2.SetPixel(i, j, toColor(result));
+                }
+            }
+            return bmp2;
         }
 
         private Bitmap ThresholdNegative(Bitmap bmp, int p)

@@ -40,9 +40,6 @@ namespace WindowsFormsApp1
                     numericUpDown.Minimum = 0;
                     tableLayout.Controls.Add(numericUpDown, 1, 0);
                 }
-
-                //tableLayout.RowStyles[0].SizeType = SizeType.Absolute;
-                //tableLayout.RowStyles[0].Height = 40;
                 tableLayout.Size = new Size(150, 40);
 
                 ColorDialog colorDialog = new ColorDialog();

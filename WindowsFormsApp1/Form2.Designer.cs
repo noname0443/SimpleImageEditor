@@ -61,6 +61,8 @@ namespace WindowsFormsApp1
             this.changeQuantization = new System.Windows.Forms.NumericUpDown();
             this.makePseudoColor = new System.Windows.Forms.Button();
             this.makeSolarization = new System.Windows.Forms.Button();
+            this.makeSmooth = new System.Windows.Forms.Button();
+            this.makeSharp = new System.Windows.Forms.Button();
             this.applyButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -130,7 +132,7 @@ namespace WindowsFormsApp1
             // 
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Location = new System.Drawing.Point(3, 586);
+            this.button1.Location = new System.Drawing.Point(3, 656);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(621, 27);
             this.button1.TabIndex = 1;
@@ -170,13 +172,17 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Controls.Add(this.makePseudoColor, 0, 11);
             this.tableLayoutPanel1.Controls.Add(this.makeSolarization, 0, 12);
             this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 13);
-            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 14);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 15);
+            this.tableLayoutPanel1.Controls.Add(this.makeSmooth, 0, 14);
+            this.tableLayoutPanel1.Controls.Add(this.makeSharp, 0, 15);
+            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 16);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 17);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
@@ -558,12 +564,32 @@ namespace WindowsFormsApp1
             this.makeSolarization.UseVisualStyleBackColor = true;
             this.makeSolarization.Click += new System.EventHandler(this.makeSolarization_Click);
             // 
+            // makeSmooth
+            // 
+            this.makeSmooth.Location = new System.Drawing.Point(3, 551);
+            this.makeSmooth.Name = "makeSmooth";
+            this.makeSmooth.Size = new System.Drawing.Size(621, 29);
+            this.makeSmooth.TabIndex = 5;
+            this.makeSmooth.Text = "Make smooth";
+            this.makeSmooth.UseVisualStyleBackColor = true;
+            this.makeSmooth.Click += new System.EventHandler(this.makeSmooth_Click);
+            // 
+            // makeSharp
+            // 
+            this.makeSharp.Location = new System.Drawing.Point(3, 586);
+            this.makeSharp.Name = "makeSharp";
+            this.makeSharp.Size = new System.Drawing.Size(621, 29);
+            this.makeSharp.TabIndex = 5;
+            this.makeSharp.Text = "Make sharp";
+            this.makeSharp.UseVisualStyleBackColor = true;
+            this.makeSharp.Click += new System.EventHandler(this.makeSharp_Click);
+            // 
             // applyButton
             // 
             this.applyButton.AutoSize = true;
             this.applyButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.applyButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.applyButton.Location = new System.Drawing.Point(3, 551);
+            this.applyButton.Location = new System.Drawing.Point(3, 621);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(621, 29);
             this.applyButton.TabIndex = 5;
@@ -647,6 +673,10 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TableLayoutPanel layoutForQuantization;
         public System.Windows.Forms.Button makeQuantization;
         public System.Windows.Forms.NumericUpDown changeQuantization;
+
+        public System.Windows.Forms.Button makeSmooth;
+
+        public System.Windows.Forms.Button makeSharp;
 
         public System.Windows.Forms.Button makeSolarization;
     }
