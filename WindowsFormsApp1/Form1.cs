@@ -12,17 +12,17 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        private static int Normalize(int value)
+        public static int Normalize(int value)
         {
             return value >= 0 ? value <= 255 ? value : 255 : 0;
         }
 
-        private static (int, int, int) fromColor(Color color)
+        public static (int, int, int) fromColor(Color color)
         {
             return (color.R, color.G, color.B);
         }
 
-        private static Color toColor((int, int, int) value)
+        public static Color toColor((int, int, int) value)
         {
             return Color.FromArgb(
                 Normalize(value.Item1),
@@ -31,7 +31,7 @@ namespace WindowsFormsApp1
             );
         }
 
-        private static (int, int, int) Mult((int, int, int) value, double c)
+        public static (int, int, int) Mult((int, int, int) value, double c)
         {
             return ((int)((double)value.Item1 * c),
                 (int)((double)value.Item2 * c),
@@ -39,7 +39,7 @@ namespace WindowsFormsApp1
             );
         }
 
-        private static (int, int, int) Sum((int, int, int) a, (int, int, int) b)
+        public static (int, int, int) Sum((int, int, int) a, (int, int, int) b)
         {
             return (a.Item1 + b.Item1,
                 a.Item2 + b.Item2,
@@ -123,6 +123,98 @@ namespace WindowsFormsApp1
             return bmp2;
         }
 
+        public static Bitmap useMedianFilter(Bitmap bmp)
+        {
+            Func<Color, Color, int> Comparer = (Color a, Color b) =>
+            {
+                byte aC = (byte)(0.3 * a.R + 0.59 * a.G + 0.11 * a.B);
+                byte bC = (byte)(0.3 * b.R + 0.59 * b.G + 0.11 * b.B);
+
+                if (aC < bC)
+                    return 1;
+                if (aC == bC)
+                    return 0;
+                return -1;
+            };
+            Bitmap bmp2 = (Bitmap)bmp.Clone();
+            for (int i = 1; i < bmp.Width - 1; i++)
+            {
+                for (int j = 1; j < bmp.Height - 1; j++)
+                {
+                    List<Color> list = new List<Color>();
+                    list.Add(bmp.GetPixel(i - 1, j - 1));
+                    list.Add(bmp.GetPixel(i - 1, j));
+                    list.Add(bmp.GetPixel(i - 1, j + 1));
+
+                    list.Add(bmp.GetPixel(i, j - 1));
+                    list.Add(bmp.GetPixel(i, j));
+                    list.Add(bmp.GetPixel(i, j + 1));
+
+                    list.Add(bmp.GetPixel(i + 1, j - 1));
+                    list.Add(bmp.GetPixel(i + 1, j));
+                    list.Add(bmp.GetPixel(i + 1, j + 1));
+
+                    list.Sort((x, y) => Comparer(x, y));
+
+                    bmp2.SetPixel(i, j, list[4]);
+                }
+            }
+            return bmp2;
+        }
+
+        public static Bitmap StochasticAlignment(Bitmap bmp)
+        {
+            Func<int, int> ToNear = (int value) =>
+            {
+                return value < 128 ? 0 : 255;
+            };
+            Func<Color, Color, double, Color> GetAlignment = (Color src, Color to, double c) =>
+            {
+                (int, int, int) colorInt = (src.R, src.G, src.B);
+                (int, int, int) colorBin = (ToNear(src.R), ToNear(src.G), ToNear(src.B));
+
+                (int, int, int) colorToInt = (to.R, to.G, to.B);
+                return Color.FromArgb(
+                    Normalize(colorToInt.Item1 + (int)((colorInt.Item1 - colorBin.Item1) * c)),
+                    Normalize(colorToInt.Item2 + (int)((colorInt.Item2 - colorBin.Item2) * c)),
+                    Normalize(colorToInt.Item3 + (int)((colorInt.Item3 - colorBin.Item3) * c))
+                    );
+            };
+            Bitmap bmp2 = (Bitmap)bmp.Clone();
+            for (int i = 1; i < bmp.Width - 1; i++)
+            {
+                for (int j = 0; j < bmp.Height - 1; j++)
+                {
+                    Color curColor = bmp.GetPixel(i, j);
+                    bmp2.SetPixel(i-1, j + 1, GetAlignment(curColor, bmp.GetPixel(i-1,j+1), 3.0 / 16.0));
+                    bmp2.SetPixel(i, j + 1, GetAlignment(curColor, bmp.GetPixel(i, j + 1), 5.0 / 16.0));
+                    bmp2.SetPixel(i + 1, j + 1, GetAlignment(curColor, bmp.GetPixel(i + 1, j + 1), 1.0 / 16.0));
+                    bmp2.SetPixel(i + 1, j, GetAlignment(curColor, bmp.GetPixel(i + 1, j), 7.0 / 16.0));
+                }
+            }
+            return bmp2;
+        }
+
+        public static Bitmap makeStrengtheningBoundaries(Bitmap bmp)
+        {
+            Bitmap bmp2 = (Bitmap)bmp.Clone();
+            for (int i = 1; i < bmp.Width - 1; i++)
+            {
+                for (int j = 1; j < bmp.Height - 1; j++)
+                {
+                    Color sourceColor = bmp.GetPixel(i - 1, j);
+                    (int, int, int) result = (sourceColor.R, sourceColor.G, sourceColor.B);
+                    result = Mult(result, -1.0);
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i, j - 1)), -1.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i, j)), 4.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i, j + 1)), -1.0));
+                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i + 1, j)), -1.0));
+
+                    bmp2.SetPixel(i, j, toColor(result));
+                }
+            }
+            return bmp2;
+        }
         private Bitmap ThresholdNegative(Bitmap bmp, int p)
         {
             Func<int, int, int> S = (int Color, int Brightness) =>
@@ -360,6 +452,26 @@ namespace WindowsFormsApp1
                 }
             }
             return bmp;
+        }
+
+        public static Bitmap RotateImage(Bitmap bmp, double angle)
+        {
+            int x0 = bmp.Width / 2;
+            int y0 = bmp.Height / 2; // REMAKE
+            double rad = Math.PI * angle / 180.0;
+
+            Bitmap b2 = new Bitmap(bmp.Width, bmp.Height);
+            for (int X = 0; X < b2.Width; X++)
+            {
+                for (int Y = 0; Y < b2.Height; Y++)
+                {
+                    int x = (int)((double)(X - x0) * Math.Cos(rad) + (double)(Y - y0) * Math.Sin(rad)) + x0;
+                    int y = (int)(-(double)(X - x0) * Math.Sin(rad) + (double)(Y - y0) * Math.Cos(rad)) + y0;
+                    if (x >= 0 && y >= 0 && x < bmp.Width && y < bmp.Height)
+                        b2.SetPixel(X, Y, bmp.GetPixel(x, y));
+                }
+            }
+            return b2;
         }
 
         private void makePanel(PictureBox pictureBox)

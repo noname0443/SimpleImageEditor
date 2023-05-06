@@ -22,6 +22,117 @@ namespace WindowsFormsApp1
 
         }
 
+        private Point startPoint;
+        private Point endPoint;
+        private Rectangle selection;
+
+        private void mainPictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            startPoint = e.Location;
+        }
+
+        private void mainPictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left
+                && e.X <= mainPictureBox.Image.Width
+                && e.Y <= mainPictureBox.Image.Height)
+            {
+                int x = Math.Min(startPoint.X, e.X);
+                int y = Math.Min(startPoint.Y, e.Y);
+                int width = Math.Abs(startPoint.X - e.X);
+                int height = Math.Abs(startPoint.Y - e.Y);
+                selection = new Rectangle(x, y, width, height);
+
+                endPoint.X = e.X;
+                endPoint.Y = e.Y;
+                mainPictureBox.Invalidate();
+            }
+        }
+
+        private void mainPictureBox_LostFocus(object sender, EventArgs e)
+        {
+            selection.Width = 0;
+            selection.Height = 0;
+        }
+
+        private void mainPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            selection.Width = 0;
+            selection.Height = 0;
+        }
+
+        private static Color Interpolate((Color, Color, Color, Color) neightbors, double x, double y)
+        {
+            double p = x - (double)((int)x);
+            double q = y - (double)((int)y);
+
+            (int, int, int) first = Form1.Mult(Form1.fromColor(neightbors.Item1), (1-q) * (1 - p));
+            (int, int, int) second = Form1.Mult(Form1.fromColor(neightbors.Item2), (1-q) * p);
+            (int, int, int) third = Form1.Mult(Form1.fromColor(neightbors.Item3), q * (1 - p));
+            (int, int, int) fourth = Form1.Mult(Form1.fromColor(neightbors.Item4), q * p);
+            (int, int, int) sum = Form1.Sum(Form1.Sum(first, second), Form1.Sum(third, fourth));
+            return Form1.toColor(sum);
+        }
+
+        private void mainPictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Bitmap source = new Bitmap(mainPictureBox.Image);
+
+            int x0 = Math.Min(startPoint.X, endPoint.X);
+            int y0 = Math.Min(startPoint.Y, endPoint.Y);
+
+            int w = Math.Abs(startPoint.X - endPoint.X);
+            int h = Math.Abs(startPoint.Y - endPoint.Y);
+            if (w <= 0 || h <= 0)
+                return;
+
+            InputDialog dlg = new InputDialog();
+            dlg.Text = "Enter a value";
+            dlg.TopMost = true;
+            dlg.TopLevel = true;
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                double zoom = dlg.InputValue;
+                if (zoom <= 0)
+                    return;
+
+                Bitmap b2 = new Bitmap((int)(w * zoom), (int)(h * zoom));
+                for(int X = 0; X < b2.Width; X++)
+                {
+                    for(int Y = 0; Y < b2.Height; Y++)
+                    {
+                        double x = (x0 + (double)X / zoom);
+                        double y = (y0 + (double)Y / zoom);
+                        b2.SetPixel(X, Y,
+                            Interpolate(
+                            (
+                                source.GetPixel((int)x, (int)y),
+                                source.GetPixel((int)x + 1, (int)y),
+                                source.GetPixel((int)x, (int)y + 1),
+                                source.GetPixel((int)x + 1, (int)y + 1)
+                            ),
+                            x, y
+                            )
+                        );
+                    }
+                }
+                this.mainPictureBox.Image = b2;
+            }
+            selection.Width = 0;
+            selection.Height = 0;
+        }
+
+        private void mainPictureBox_Paint(object sender, PaintEventArgs e)
+        {
+            if (selection != null && selection.Width > 0 && selection.Height > 0)
+            {
+                using (Pen pen = new Pen(Color.Red, 2))
+                {
+                    e.Graphics.DrawRectangle(pen, selection);
+                }
+            }
+        }
+
         private void makeBrightnessHistogram_Click(object sender, EventArgs e)
         {
             BrightnessChart form = new BrightnessChart();
@@ -114,6 +225,26 @@ namespace WindowsFormsApp1
         private void makeSharp_Click(object sender, EventArgs e)
         {
             this.mainPictureBox.Image = Form1.makeSharp(new Bitmap(this.mainPictureBox.Image));
+        }
+
+        private void useMedianFilter_Click(object sender, EventArgs e)
+        {
+            this.mainPictureBox.Image = Form1.useMedianFilter(new Bitmap(this.mainPictureBox.Image));
+        }
+
+        private void useStochasticAlignment_Click(object sender, EventArgs e)
+        {
+            this.mainPictureBox.Image = Form1.StochasticAlignment(new Bitmap(this.mainPictureBox.Image));
+        }
+
+        private void makeStrengtheningBoundaries_Click(object sender, EventArgs e)
+        {
+            this.mainPictureBox.Image = Form1.makeStrengtheningBoundaries(new Bitmap(this.mainPictureBox.Image));
+        }
+
+        private void makeRotateButton_Click(object sender, EventArgs e)
+        {
+            this.mainPictureBox.Image = Form1.RotateImage(new Bitmap(this.mainPictureBox.Image), (double)this.changeRotateAngle.Value);
         }
     }
 }

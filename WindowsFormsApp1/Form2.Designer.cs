@@ -63,6 +63,12 @@ namespace WindowsFormsApp1
             this.makeSolarization = new System.Windows.Forms.Button();
             this.makeSmooth = new System.Windows.Forms.Button();
             this.makeSharp = new System.Windows.Forms.Button();
+            this.useMedianFilter = new System.Windows.Forms.Button();
+            this.useStochasticAlignment = new System.Windows.Forms.Button();
+            this.makeStrengtheningBoundaries = new System.Windows.Forms.Button();
+            this.layoutRotation = new System.Windows.Forms.TableLayoutPanel();
+            this.makeRotateButton = new System.Windows.Forms.Button();
+            this.changeRotateAngle = new System.Windows.Forms.NumericUpDown();
             this.applyButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -82,17 +88,25 @@ namespace WindowsFormsApp1
             this.layoutForGammaConversion.SuspendLayout();
             this.layoutForQuantization.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.changeQuantization)).BeginInit();
+            this.layoutRotation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.changeRotateAngle)).BeginInit();
             this.SuspendLayout();
             // 
             // mainPictureBox
             // 
-            this.mainPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.mainPictureBox.Location = new System.Drawing.Point(3, 3);
             this.mainPictureBox.Name = "mainPictureBox";
             this.mainPictureBox.Size = new System.Drawing.Size(621, 87);
-            this.mainPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.mainPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.mainPictureBox.TabIndex = 4;
             this.mainPictureBox.TabStop = false;
+            this.mainPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPictureBox_Paint);
+            this.mainPictureBox.LostFocus += new System.EventHandler(this.mainPictureBox_LostFocus);
+            this.mainPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseDown);
+            this.mainPictureBox.MouseLeave += new System.EventHandler(this.mainPictureBox_MouseLeave);
+            this.mainPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseMove);
+            this.mainPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseUp);
             // 
             // makeGrayScale
             // 
@@ -132,9 +146,9 @@ namespace WindowsFormsApp1
             // 
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Location = new System.Drawing.Point(3, 656);
+            this.button1.Location = new System.Drawing.Point(3, 796);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(621, 27);
+            this.button1.Size = new System.Drawing.Size(621, 20);
             this.button1.TabIndex = 1;
             this.button1.Text = "Close Window";
             this.button1.UseVisualStyleBackColor = true;
@@ -174,8 +188,12 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 13);
             this.tableLayoutPanel1.Controls.Add(this.makeSmooth, 0, 14);
             this.tableLayoutPanel1.Controls.Add(this.makeSharp, 0, 15);
-            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 16);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 17);
+            this.tableLayoutPanel1.Controls.Add(this.useMedianFilter, 0, 16);
+            this.tableLayoutPanel1.Controls.Add(this.useStochasticAlignment, 0, 17);
+            this.tableLayoutPanel1.Controls.Add(this.makeStrengtheningBoundaries, 0, 18);
+            this.tableLayoutPanel1.Controls.Add(this.layoutRotation, 0, 19);
+            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 20);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 21);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -198,7 +216,11 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 757);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 819);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // zoomBar
@@ -584,12 +606,81 @@ namespace WindowsFormsApp1
             this.makeSharp.UseVisualStyleBackColor = true;
             this.makeSharp.Click += new System.EventHandler(this.makeSharp_Click);
             // 
+            // useMedianFilter
+            // 
+            this.useMedianFilter.Location = new System.Drawing.Point(3, 621);
+            this.useMedianFilter.Name = "useMedianFilter";
+            this.useMedianFilter.Size = new System.Drawing.Size(621, 29);
+            this.useMedianFilter.TabIndex = 5;
+            this.useMedianFilter.Text = "Use median filter";
+            this.useMedianFilter.UseVisualStyleBackColor = true;
+            this.useMedianFilter.Click += new System.EventHandler(this.useMedianFilter_Click);
+            // 
+            // useStochasticAlignment
+            // 
+            this.useStochasticAlignment.Location = new System.Drawing.Point(3, 656);
+            this.useStochasticAlignment.Name = "useStochasticAlignment";
+            this.useStochasticAlignment.Size = new System.Drawing.Size(621, 29);
+            this.useStochasticAlignment.TabIndex = 5;
+            this.useStochasticAlignment.Text = "Use stochastic alignment";
+            this.useStochasticAlignment.UseVisualStyleBackColor = true;
+            this.useStochasticAlignment.Click += new System.EventHandler(this.useStochasticAlignment_Click);
+            // 
+            // makeStrengtheningBoundaries
+            // 
+            this.makeStrengtheningBoundaries.Location = new System.Drawing.Point(3, 691);
+            this.makeStrengtheningBoundaries.Name = "makeStrengtheningBoundaries";
+            this.makeStrengtheningBoundaries.Size = new System.Drawing.Size(621, 29);
+            this.makeStrengtheningBoundaries.TabIndex = 5;
+            this.makeStrengtheningBoundaries.Text = "Make Strengthening Boundaries";
+            this.makeStrengtheningBoundaries.UseVisualStyleBackColor = true;
+            this.makeStrengtheningBoundaries.Click += new System.EventHandler(this.makeStrengtheningBoundaries_Click);
+            // 
+            // layoutRotation
+            // 
+            this.layoutRotation.AutoSize = true;
+            this.layoutRotation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.layoutRotation.ColumnCount = 2;
+            this.layoutRotation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutRotation.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutRotation.Controls.Add(this.makeRotateButton, 0, 0);
+            this.layoutRotation.Controls.Add(this.changeRotateAngle, 1, 0);
+            this.layoutRotation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutRotation.Location = new System.Drawing.Point(3, 726);
+            this.layoutRotation.Name = "layoutRotation";
+            this.layoutRotation.RowCount = 1;
+            this.layoutRotation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.layoutRotation.Size = new System.Drawing.Size(621, 29);
+            this.layoutRotation.TabIndex = 2;
+            // 
+            // makeRotateButton
+            // 
+            this.makeRotateButton.Location = new System.Drawing.Point(3, 3);
+            this.makeRotateButton.Name = "makeRotateButton";
+            this.makeRotateButton.Size = new System.Drawing.Size(304, 23);
+            this.makeRotateButton.TabIndex = 5;
+            this.makeRotateButton.Text = "Do rotate";
+            this.makeRotateButton.UseVisualStyleBackColor = true;
+            this.makeRotateButton.Click += new System.EventHandler(this.makeRotateButton_Click);
+            // 
+            // changeRotateAngle
+            // 
+            this.changeRotateAngle.Location = new System.Drawing.Point(313, 3);
+            this.changeRotateAngle.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.changeRotateAngle.Name = "changeRotateAngle";
+            this.changeRotateAngle.Size = new System.Drawing.Size(305, 20);
+            this.changeRotateAngle.TabIndex = 6;
+            // 
             // applyButton
             // 
             this.applyButton.AutoSize = true;
             this.applyButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.applyButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.applyButton.Location = new System.Drawing.Point(3, 621);
+            this.applyButton.Location = new System.Drawing.Point(3, 761);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(621, 29);
             this.applyButton.TabIndex = 5;
@@ -601,9 +692,9 @@ namespace WindowsFormsApp1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(627, 757);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(627, 819);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.Name = "Form2";
             this.Text = "Image Editor";
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
@@ -626,14 +717,14 @@ namespace WindowsFormsApp1
             this.layoutForGammaConversion.PerformLayout();
             this.layoutForQuantization.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.changeQuantization)).EndInit();
+            this.layoutRotation.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.changeRotateAngle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        public System.Windows.Forms.PictureBox mainPictureBox;
         public System.Windows.Forms.Button makeGrayScale;
         public System.Windows.Forms.Button changeBrightness;
         public System.Windows.Forms.Button makeBrightnessHistogram;
@@ -678,6 +769,17 @@ namespace WindowsFormsApp1
 
         public System.Windows.Forms.Button makeSharp;
 
+        public System.Windows.Forms.Button useMedianFilter;
+
+        public System.Windows.Forms.Button useStochasticAlignment;
+
+        public System.Windows.Forms.Button makeStrengtheningBoundaries;
+
         public System.Windows.Forms.Button makeSolarization;
+        public System.Windows.Forms.PictureBox mainPictureBox;
+
+        public System.Windows.Forms.Button makeRotateButton;
+        public System.Windows.Forms.NumericUpDown changeRotateAngle;
+        private System.Windows.Forms.TableLayoutPanel layoutRotation;
     }
 }
