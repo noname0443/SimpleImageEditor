@@ -186,31 +186,10 @@ namespace WindowsFormsApp1
                 for (int j = 0; j < bmp.Height - 1; j++)
                 {
                     Color curColor = bmp.GetPixel(i, j);
-                    bmp2.SetPixel(i-1, j + 1, GetAlignment(curColor, bmp.GetPixel(i-1,j+1), 3.0 / 16.0));
+                    bmp2.SetPixel(i - 1, j + 1, GetAlignment(curColor, bmp.GetPixel(i - 1, j + 1), 3.0 / 16.0));
                     bmp2.SetPixel(i, j + 1, GetAlignment(curColor, bmp.GetPixel(i, j + 1), 5.0 / 16.0));
                     bmp2.SetPixel(i + 1, j + 1, GetAlignment(curColor, bmp.GetPixel(i + 1, j + 1), 1.0 / 16.0));
                     bmp2.SetPixel(i + 1, j, GetAlignment(curColor, bmp.GetPixel(i + 1, j), 7.0 / 16.0));
-                }
-            }
-            return bmp2;
-        }
-
-        public static Bitmap makeStrengtheningBoundaries(Bitmap bmp)
-        {
-            Bitmap bmp2 = (Bitmap)bmp.Clone();
-            for (int i = 1; i < bmp.Width - 1; i++)
-            {
-                for (int j = 1; j < bmp.Height - 1; j++)
-                {
-                    Color sourceColor = bmp.GetPixel(i - 1, j);
-                    (int, int, int) result = (sourceColor.R, sourceColor.G, sourceColor.B);
-                    result = Mult(result, -1.0);
-                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i, j - 1)), -1.0));
-                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i, j)), 4.0));
-                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i, j + 1)), -1.0));
-                    result = Sum(result, Mult(fromColor(bmp.GetPixel(i + 1, j)), -1.0));
-
-                    bmp2.SetPixel(i, j, toColor(result));
                 }
             }
             return bmp2;
@@ -486,12 +465,6 @@ namespace WindowsFormsApp1
             form.deleteButton.Click += (a, b) => {
                 pictureBox.Dispose();
                 form.Close();
-            };
-
-            form.zoomBar.Scroll += (a, b) =>
-            {
-                Console.WriteLine(form.zoomBar.Value);
-                changePictureSize(form.mainPictureBox, form.zoomBar.Value);
             };
 
             form.changeBrightness.Click += (a, b) => {

@@ -29,14 +29,12 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainPictureBox = new System.Windows.Forms.PictureBox();
             this.makeGrayScale = new System.Windows.Forms.Button();
             this.makeBrightnessHistogram = new System.Windows.Forms.Button();
             this.changeBrightness = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.zoomBar = new System.Windows.Forms.TrackBar();
             this.layoutForChangeBrightness = new System.Windows.Forms.TableLayoutPanel();
             this.changeBrightnessNumeric = new System.Windows.Forms.NumericUpDown();
             this.layoutForThresholdNegative = new System.Windows.Forms.TableLayoutPanel();
@@ -70,9 +68,8 @@ namespace WindowsFormsApp1
             this.makeRotateButton = new System.Windows.Forms.Button();
             this.changeRotateAngle = new System.Windows.Forms.NumericUpDown();
             this.applyButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
+            this.mainPictureBox = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.zoomBar)).BeginInit();
             this.layoutForChangeBrightness.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.changeBrightnessNumeric)).BeginInit();
             this.layoutForThresholdNegative.SuspendLayout();
@@ -90,23 +87,8 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.changeQuantization)).BeginInit();
             this.layoutRotation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.changeRotateAngle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // mainPictureBox
-            // 
-            this.mainPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.mainPictureBox.Location = new System.Drawing.Point(3, 3);
-            this.mainPictureBox.Name = "mainPictureBox";
-            this.mainPictureBox.Size = new System.Drawing.Size(621, 87);
-            this.mainPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.mainPictureBox.TabIndex = 4;
-            this.mainPictureBox.TabStop = false;
-            this.mainPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPictureBox_Paint);
-            this.mainPictureBox.LostFocus += new System.EventHandler(this.mainPictureBox_LostFocus);
-            this.mainPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseDown);
-            this.mainPictureBox.MouseLeave += new System.EventHandler(this.mainPictureBox_MouseLeave);
-            this.mainPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseMove);
-            this.mainPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseUp);
             // 
             // makeGrayScale
             // 
@@ -115,7 +97,7 @@ namespace WindowsFormsApp1
             this.makeGrayScale.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makeGrayScale.Location = new System.Drawing.Point(3, 516);
             this.makeGrayScale.Name = "makeGrayScale";
-            this.makeGrayScale.Size = new System.Drawing.Size(621, 29);
+            this.makeGrayScale.Size = new System.Drawing.Size(1120, 29);
             this.makeGrayScale.TabIndex = 3;
             this.makeGrayScale.Text = "Make Gray-Scale";
             this.makeGrayScale.UseVisualStyleBackColor = true;
@@ -127,7 +109,7 @@ namespace WindowsFormsApp1
             this.makeBrightnessHistogram.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makeBrightnessHistogram.Location = new System.Drawing.Point(3, 201);
             this.makeBrightnessHistogram.Name = "makeBrightnessHistogram";
-            this.makeBrightnessHistogram.Size = new System.Drawing.Size(621, 29);
+            this.makeBrightnessHistogram.Size = new System.Drawing.Size(1120, 29);
             this.makeBrightnessHistogram.TabIndex = 5;
             this.makeBrightnessHistogram.Text = "Make Brightness-Histogram";
             this.makeBrightnessHistogram.UseVisualStyleBackColor = true;
@@ -135,9 +117,10 @@ namespace WindowsFormsApp1
             // 
             // changeBrightness
             // 
+            this.changeBrightness.Dock = System.Windows.Forms.DockStyle.Fill;
             this.changeBrightness.Location = new System.Drawing.Point(3, 3);
             this.changeBrightness.Name = "changeBrightness";
-            this.changeBrightness.Size = new System.Drawing.Size(304, 23);
+            this.changeBrightness.Size = new System.Drawing.Size(554, 23);
             this.changeBrightness.TabIndex = 5;
             this.changeBrightness.Text = "Change Brightness";
             this.changeBrightness.UseVisualStyleBackColor = true;
@@ -148,7 +131,7 @@ namespace WindowsFormsApp1
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
             this.button1.Location = new System.Drawing.Point(3, 796);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(621, 20);
+            this.button1.Size = new System.Drawing.Size(1120, 29);
             this.button1.TabIndex = 1;
             this.button1.Text = "Close Window";
             this.button1.UseVisualStyleBackColor = true;
@@ -161,43 +144,43 @@ namespace WindowsFormsApp1
             this.deleteButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.deleteButton.Location = new System.Drawing.Point(3, 131);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(621, 29);
+            this.deleteButton.Size = new System.Drawing.Size(1120, 29);
             this.deleteButton.TabIndex = 0;
             this.deleteButton.Text = "Delete image";
             this.deleteButton.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.mainPictureBox, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.zoomBar, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.deleteButton, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.layoutForChangeBrightness, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.makeBrightnessHistogram, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.layoutForThresholdNegative, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.layoutForThresholding, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.layoutForUpContrast, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.layoutForDownContrast, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.layoutForGammaConversion, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.layoutForQuantization, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.makePseudoColor, 0, 11);
-            this.tableLayoutPanel1.Controls.Add(this.makeSolarization, 0, 12);
-            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 13);
-            this.tableLayoutPanel1.Controls.Add(this.makeSmooth, 0, 14);
-            this.tableLayoutPanel1.Controls.Add(this.makeSharp, 0, 15);
-            this.tableLayoutPanel1.Controls.Add(this.useMedianFilter, 0, 16);
-            this.tableLayoutPanel1.Controls.Add(this.useStochasticAlignment, 0, 17);
-            this.tableLayoutPanel1.Controls.Add(this.makeStrengtheningBoundaries, 0, 18);
-            this.tableLayoutPanel1.Controls.Add(this.layoutRotation, 0, 19);
-            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 20);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 21);
+            this.tableLayoutPanel1.Controls.Add(this.deleteButton, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForChangeBrightness, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.makeBrightnessHistogram, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForThresholdNegative, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForThresholding, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForUpContrast, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForDownContrast, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForGammaConversion, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.layoutForQuantization, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.makePseudoColor, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.makeSolarization, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.makeGrayScale, 0, 12);
+            this.tableLayoutPanel1.Controls.Add(this.makeSmooth, 0, 13);
+            this.tableLayoutPanel1.Controls.Add(this.makeSharp, 0, 14);
+            this.tableLayoutPanel1.Controls.Add(this.useMedianFilter, 0, 15);
+            this.tableLayoutPanel1.Controls.Add(this.useStochasticAlignment, 0, 16);
+            this.tableLayoutPanel1.Controls.Add(this.makeStrengtheningBoundaries, 0, 17);
+            this.tableLayoutPanel1.Controls.Add(this.layoutRotation, 0, 18);
+            this.tableLayoutPanel1.Controls.Add(this.applyButton, 0, 19);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 20);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
@@ -218,22 +201,8 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 819);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1125, 883);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // zoomBar
-            // 
-            this.zoomBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.zoomBar.Location = new System.Drawing.Point(3, 96);
-            this.zoomBar.Maximum = 1200;
-            this.zoomBar.Minimum = 1;
-            this.zoomBar.Name = "zoomBar";
-            this.zoomBar.Size = new System.Drawing.Size(621, 29);
-            this.zoomBar.TabIndex = 6;
-            this.zoomBar.Value = 1;
-            this.zoomBar.Scroll += new System.EventHandler(this.zoomBar_Scroll);
             // 
             // layoutForChangeBrightness
             // 
@@ -249,12 +218,13 @@ namespace WindowsFormsApp1
             this.layoutForChangeBrightness.Name = "layoutForChangeBrightness";
             this.layoutForChangeBrightness.RowCount = 1;
             this.layoutForChangeBrightness.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.layoutForChangeBrightness.Size = new System.Drawing.Size(621, 29);
+            this.layoutForChangeBrightness.Size = new System.Drawing.Size(1120, 29);
             this.layoutForChangeBrightness.TabIndex = 2;
             // 
             // changeBrightnessNumeric
             // 
-            this.changeBrightnessNumeric.Location = new System.Drawing.Point(313, 3);
+            this.changeBrightnessNumeric.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.changeBrightnessNumeric.Location = new System.Drawing.Point(563, 3);
             this.changeBrightnessNumeric.Maximum = new decimal(new int[] {
             255,
             0,
@@ -266,7 +236,7 @@ namespace WindowsFormsApp1
             0,
             -2147483648});
             this.changeBrightnessNumeric.Name = "changeBrightnessNumeric";
-            this.changeBrightnessNumeric.Size = new System.Drawing.Size(305, 20);
+            this.changeBrightnessNumeric.Size = new System.Drawing.Size(554, 20);
             this.changeBrightnessNumeric.TabIndex = 6;
             // 
             // layoutForThresholdNegative
@@ -283,21 +253,23 @@ namespace WindowsFormsApp1
             this.layoutForThresholdNegative.Name = "layoutForThresholdNegative";
             this.layoutForThresholdNegative.RowCount = 1;
             this.layoutForThresholdNegative.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.layoutForThresholdNegative.Size = new System.Drawing.Size(621, 29);
+            this.layoutForThresholdNegative.Size = new System.Drawing.Size(1120, 29);
             this.layoutForThresholdNegative.TabIndex = 2;
             // 
             // makeThresholdNegative
             // 
+            this.makeThresholdNegative.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makeThresholdNegative.Location = new System.Drawing.Point(3, 3);
             this.makeThresholdNegative.Name = "makeThresholdNegative";
-            this.makeThresholdNegative.Size = new System.Drawing.Size(304, 23);
+            this.makeThresholdNegative.Size = new System.Drawing.Size(554, 23);
             this.makeThresholdNegative.TabIndex = 5;
             this.makeThresholdNegative.Text = "Change Threshold Negative";
             this.makeThresholdNegative.UseVisualStyleBackColor = true;
             // 
             // changeThresholdNegative
             // 
-            this.changeThresholdNegative.Location = new System.Drawing.Point(313, 3);
+            this.changeThresholdNegative.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.changeThresholdNegative.Location = new System.Drawing.Point(563, 3);
             this.changeThresholdNegative.Maximum = new decimal(new int[] {
             255,
             0,
@@ -309,7 +281,7 @@ namespace WindowsFormsApp1
             0,
             -2147483648});
             this.changeThresholdNegative.Name = "changeThresholdNegative";
-            this.changeThresholdNegative.Size = new System.Drawing.Size(305, 20);
+            this.changeThresholdNegative.Size = new System.Drawing.Size(554, 20);
             this.changeThresholdNegative.TabIndex = 6;
             // 
             // layoutForThresholding
@@ -326,21 +298,23 @@ namespace WindowsFormsApp1
             this.layoutForThresholding.Name = "layoutForThresholding";
             this.layoutForThresholding.RowCount = 1;
             this.layoutForThresholding.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.layoutForThresholding.Size = new System.Drawing.Size(621, 29);
+            this.layoutForThresholding.Size = new System.Drawing.Size(1120, 29);
             this.layoutForThresholding.TabIndex = 2;
             // 
             // makeThresholding
             // 
+            this.makeThresholding.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makeThresholding.Location = new System.Drawing.Point(3, 3);
             this.makeThresholding.Name = "makeThresholding";
-            this.makeThresholding.Size = new System.Drawing.Size(304, 23);
+            this.makeThresholding.Size = new System.Drawing.Size(554, 23);
             this.makeThresholding.TabIndex = 5;
             this.makeThresholding.Text = "Change Thresholding";
             this.makeThresholding.UseVisualStyleBackColor = true;
             // 
             // changeThresholding
             // 
-            this.changeThresholding.Location = new System.Drawing.Point(313, 3);
+            this.changeThresholding.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.changeThresholding.Location = new System.Drawing.Point(563, 3);
             this.changeThresholding.Maximum = new decimal(new int[] {
             255,
             0,
@@ -352,7 +326,7 @@ namespace WindowsFormsApp1
             0,
             -2147483648});
             this.changeThresholding.Name = "changeThresholding";
-            this.changeThresholding.Size = new System.Drawing.Size(305, 20);
+            this.changeThresholding.Size = new System.Drawing.Size(554, 20);
             this.changeThresholding.TabIndex = 6;
             // 
             // layoutForUpContrast
@@ -372,11 +346,12 @@ namespace WindowsFormsApp1
             this.layoutForUpContrast.RowCount = 1;
             this.layoutForUpContrast.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.layoutForUpContrast.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.layoutForUpContrast.Size = new System.Drawing.Size(621, 29);
+            this.layoutForUpContrast.Size = new System.Drawing.Size(1120, 29);
             this.layoutForUpContrast.TabIndex = 2;
             // 
             // upChangeContrastQ1
             // 
+            this.upChangeContrastQ1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.upChangeContrastQ1.Location = new System.Drawing.Point(153, 3);
             this.upChangeContrastQ1.Maximum = new decimal(new int[] {
             255,
@@ -389,12 +364,13 @@ namespace WindowsFormsApp1
             0,
             -2147483648});
             this.upChangeContrastQ1.Name = "upChangeContrastQ1";
-            this.upChangeContrastQ1.Size = new System.Drawing.Size(229, 20);
+            this.upChangeContrastQ1.Size = new System.Drawing.Size(479, 20);
             this.upChangeContrastQ1.TabIndex = 7;
             // 
             // upChangeContrastQ2
             // 
-            this.upChangeContrastQ2.Location = new System.Drawing.Point(388, 3);
+            this.upChangeContrastQ2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.upChangeContrastQ2.Location = new System.Drawing.Point(638, 3);
             this.upChangeContrastQ2.Maximum = new decimal(new int[] {
             255,
             0,
@@ -406,11 +382,12 @@ namespace WindowsFormsApp1
             0,
             -2147483648});
             this.upChangeContrastQ2.Name = "upChangeContrastQ2";
-            this.upChangeContrastQ2.Size = new System.Drawing.Size(229, 20);
+            this.upChangeContrastQ2.Size = new System.Drawing.Size(479, 20);
             this.upChangeContrastQ2.TabIndex = 8;
             // 
             // makeUpContrast
             // 
+            this.makeUpContrast.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makeUpContrast.Location = new System.Drawing.Point(3, 3);
             this.makeUpContrast.Name = "makeUpContrast";
             this.makeUpContrast.Size = new System.Drawing.Size(144, 23);
@@ -435,11 +412,12 @@ namespace WindowsFormsApp1
             this.layoutForDownContrast.RowCount = 1;
             this.layoutForDownContrast.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.layoutForDownContrast.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.layoutForDownContrast.Size = new System.Drawing.Size(621, 29);
+            this.layoutForDownContrast.Size = new System.Drawing.Size(1120, 29);
             this.layoutForDownContrast.TabIndex = 2;
             // 
             // downChangeContrastQ1
             // 
+            this.downChangeContrastQ1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.downChangeContrastQ1.Location = new System.Drawing.Point(153, 3);
             this.downChangeContrastQ1.Maximum = new decimal(new int[] {
             255,
@@ -452,12 +430,13 @@ namespace WindowsFormsApp1
             0,
             -2147483648});
             this.downChangeContrastQ1.Name = "downChangeContrastQ1";
-            this.downChangeContrastQ1.Size = new System.Drawing.Size(229, 20);
+            this.downChangeContrastQ1.Size = new System.Drawing.Size(479, 20);
             this.downChangeContrastQ1.TabIndex = 7;
             // 
             // downChangeContrastQ2
             // 
-            this.downChangeContrastQ2.Location = new System.Drawing.Point(388, 3);
+            this.downChangeContrastQ2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.downChangeContrastQ2.Location = new System.Drawing.Point(638, 3);
             this.downChangeContrastQ2.Maximum = new decimal(new int[] {
             255,
             0,
@@ -469,11 +448,12 @@ namespace WindowsFormsApp1
             0,
             -2147483648});
             this.downChangeContrastQ2.Name = "downChangeContrastQ2";
-            this.downChangeContrastQ2.Size = new System.Drawing.Size(229, 20);
+            this.downChangeContrastQ2.Size = new System.Drawing.Size(479, 20);
             this.downChangeContrastQ2.TabIndex = 8;
             // 
             // makeDownContrast
             // 
+            this.makeDownContrast.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makeDownContrast.Location = new System.Drawing.Point(3, 3);
             this.makeDownContrast.Name = "makeDownContrast";
             this.makeDownContrast.Size = new System.Drawing.Size(144, 23);
@@ -495,23 +475,25 @@ namespace WindowsFormsApp1
             this.layoutForGammaConversion.Name = "layoutForGammaConversion";
             this.layoutForGammaConversion.RowCount = 1;
             this.layoutForGammaConversion.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.layoutForGammaConversion.Size = new System.Drawing.Size(621, 29);
+            this.layoutForGammaConversion.Size = new System.Drawing.Size(1120, 29);
             this.layoutForGammaConversion.TabIndex = 2;
             // 
             // makeGammaConversion
             // 
+            this.makeGammaConversion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makeGammaConversion.Location = new System.Drawing.Point(3, 3);
             this.makeGammaConversion.Name = "makeGammaConversion";
-            this.makeGammaConversion.Size = new System.Drawing.Size(304, 23);
+            this.makeGammaConversion.Size = new System.Drawing.Size(554, 23);
             this.makeGammaConversion.TabIndex = 0;
             this.makeGammaConversion.Text = "Increase gamma conversion";
             this.makeGammaConversion.UseVisualStyleBackColor = true;
             // 
             // changeGammaConversion
             // 
-            this.changeGammaConversion.Location = new System.Drawing.Point(313, 3);
+            this.changeGammaConversion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.changeGammaConversion.Location = new System.Drawing.Point(563, 3);
             this.changeGammaConversion.Name = "changeGammaConversion";
-            this.changeGammaConversion.Size = new System.Drawing.Size(305, 20);
+            this.changeGammaConversion.Size = new System.Drawing.Size(554, 20);
             this.changeGammaConversion.TabIndex = 0;
             // 
             // layoutForQuantization
@@ -528,14 +510,15 @@ namespace WindowsFormsApp1
             this.layoutForQuantization.Name = "layoutForQuantization";
             this.layoutForQuantization.RowCount = 1;
             this.layoutForQuantization.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.layoutForQuantization.Size = new System.Drawing.Size(621, 29);
+            this.layoutForQuantization.Size = new System.Drawing.Size(1120, 29);
             this.layoutForQuantization.TabIndex = 2;
             // 
             // makeQuantization
             // 
+            this.makeQuantization.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makeQuantization.Location = new System.Drawing.Point(3, 3);
             this.makeQuantization.Name = "makeQuantization";
-            this.makeQuantization.Size = new System.Drawing.Size(304, 23);
+            this.makeQuantization.Size = new System.Drawing.Size(554, 23);
             this.makeQuantization.TabIndex = 5;
             this.makeQuantization.Text = "Make Quantization";
             this.makeQuantization.UseVisualStyleBackColor = true;
@@ -543,7 +526,8 @@ namespace WindowsFormsApp1
             // 
             // changeQuantization
             // 
-            this.changeQuantization.Location = new System.Drawing.Point(313, 3);
+            this.changeQuantization.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.changeQuantization.Location = new System.Drawing.Point(563, 3);
             this.changeQuantization.Maximum = new decimal(new int[] {
             255,
             0,
@@ -555,7 +539,7 @@ namespace WindowsFormsApp1
             0,
             0});
             this.changeQuantization.Name = "changeQuantization";
-            this.changeQuantization.Size = new System.Drawing.Size(305, 20);
+            this.changeQuantization.Size = new System.Drawing.Size(554, 20);
             this.changeQuantization.TabIndex = 6;
             this.changeQuantization.Value = new decimal(new int[] {
             1,
@@ -570,7 +554,7 @@ namespace WindowsFormsApp1
             this.makePseudoColor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makePseudoColor.Location = new System.Drawing.Point(3, 446);
             this.makePseudoColor.Name = "makePseudoColor";
-            this.makePseudoColor.Size = new System.Drawing.Size(621, 29);
+            this.makePseudoColor.Size = new System.Drawing.Size(1120, 29);
             this.makePseudoColor.TabIndex = 3;
             this.makePseudoColor.Text = "Make Pseudo Color";
             this.makePseudoColor.UseVisualStyleBackColor = true;
@@ -578,9 +562,11 @@ namespace WindowsFormsApp1
             // 
             // makeSolarization
             // 
+            this.makeSolarization.AutoSize = true;
+            this.makeSolarization.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makeSolarization.Location = new System.Drawing.Point(3, 481);
             this.makeSolarization.Name = "makeSolarization";
-            this.makeSolarization.Size = new System.Drawing.Size(621, 29);
+            this.makeSolarization.Size = new System.Drawing.Size(1120, 29);
             this.makeSolarization.TabIndex = 5;
             this.makeSolarization.Text = "Make Solarization";
             this.makeSolarization.UseVisualStyleBackColor = true;
@@ -588,9 +574,11 @@ namespace WindowsFormsApp1
             // 
             // makeSmooth
             // 
+            this.makeSmooth.AutoSize = true;
+            this.makeSmooth.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makeSmooth.Location = new System.Drawing.Point(3, 551);
             this.makeSmooth.Name = "makeSmooth";
-            this.makeSmooth.Size = new System.Drawing.Size(621, 29);
+            this.makeSmooth.Size = new System.Drawing.Size(1120, 29);
             this.makeSmooth.TabIndex = 5;
             this.makeSmooth.Text = "Make smooth";
             this.makeSmooth.UseVisualStyleBackColor = true;
@@ -598,9 +586,11 @@ namespace WindowsFormsApp1
             // 
             // makeSharp
             // 
+            this.makeSharp.AutoSize = true;
+            this.makeSharp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makeSharp.Location = new System.Drawing.Point(3, 586);
             this.makeSharp.Name = "makeSharp";
-            this.makeSharp.Size = new System.Drawing.Size(621, 29);
+            this.makeSharp.Size = new System.Drawing.Size(1120, 29);
             this.makeSharp.TabIndex = 5;
             this.makeSharp.Text = "Make sharp";
             this.makeSharp.UseVisualStyleBackColor = true;
@@ -608,9 +598,11 @@ namespace WindowsFormsApp1
             // 
             // useMedianFilter
             // 
+            this.useMedianFilter.AutoSize = true;
+            this.useMedianFilter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.useMedianFilter.Location = new System.Drawing.Point(3, 621);
             this.useMedianFilter.Name = "useMedianFilter";
-            this.useMedianFilter.Size = new System.Drawing.Size(621, 29);
+            this.useMedianFilter.Size = new System.Drawing.Size(1120, 29);
             this.useMedianFilter.TabIndex = 5;
             this.useMedianFilter.Text = "Use median filter";
             this.useMedianFilter.UseVisualStyleBackColor = true;
@@ -618,9 +610,11 @@ namespace WindowsFormsApp1
             // 
             // useStochasticAlignment
             // 
+            this.useStochasticAlignment.AutoSize = true;
+            this.useStochasticAlignment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.useStochasticAlignment.Location = new System.Drawing.Point(3, 656);
             this.useStochasticAlignment.Name = "useStochasticAlignment";
-            this.useStochasticAlignment.Size = new System.Drawing.Size(621, 29);
+            this.useStochasticAlignment.Size = new System.Drawing.Size(1120, 29);
             this.useStochasticAlignment.TabIndex = 5;
             this.useStochasticAlignment.Text = "Use stochastic alignment";
             this.useStochasticAlignment.UseVisualStyleBackColor = true;
@@ -628,9 +622,11 @@ namespace WindowsFormsApp1
             // 
             // makeStrengtheningBoundaries
             // 
+            this.makeStrengtheningBoundaries.AutoSize = true;
+            this.makeStrengtheningBoundaries.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makeStrengtheningBoundaries.Location = new System.Drawing.Point(3, 691);
             this.makeStrengtheningBoundaries.Name = "makeStrengtheningBoundaries";
-            this.makeStrengtheningBoundaries.Size = new System.Drawing.Size(621, 29);
+            this.makeStrengtheningBoundaries.Size = new System.Drawing.Size(1120, 29);
             this.makeStrengtheningBoundaries.TabIndex = 5;
             this.makeStrengtheningBoundaries.Text = "Make Strengthening Boundaries";
             this.makeStrengtheningBoundaries.UseVisualStyleBackColor = true;
@@ -650,14 +646,15 @@ namespace WindowsFormsApp1
             this.layoutRotation.Name = "layoutRotation";
             this.layoutRotation.RowCount = 1;
             this.layoutRotation.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.layoutRotation.Size = new System.Drawing.Size(621, 29);
+            this.layoutRotation.Size = new System.Drawing.Size(1120, 29);
             this.layoutRotation.TabIndex = 2;
             // 
             // makeRotateButton
             // 
+            this.makeRotateButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.makeRotateButton.Location = new System.Drawing.Point(3, 3);
             this.makeRotateButton.Name = "makeRotateButton";
-            this.makeRotateButton.Size = new System.Drawing.Size(304, 23);
+            this.makeRotateButton.Size = new System.Drawing.Size(554, 23);
             this.makeRotateButton.TabIndex = 5;
             this.makeRotateButton.Text = "Do rotate";
             this.makeRotateButton.UseVisualStyleBackColor = true;
@@ -665,14 +662,15 @@ namespace WindowsFormsApp1
             // 
             // changeRotateAngle
             // 
-            this.changeRotateAngle.Location = new System.Drawing.Point(313, 3);
+            this.changeRotateAngle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.changeRotateAngle.Location = new System.Drawing.Point(563, 3);
             this.changeRotateAngle.Maximum = new decimal(new int[] {
             360,
             0,
             0,
             0});
             this.changeRotateAngle.Name = "changeRotateAngle";
-            this.changeRotateAngle.Size = new System.Drawing.Size(305, 20);
+            this.changeRotateAngle.Size = new System.Drawing.Size(554, 20);
             this.changeRotateAngle.TabIndex = 6;
             // 
             // applyButton
@@ -682,25 +680,40 @@ namespace WindowsFormsApp1
             this.applyButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.applyButton.Location = new System.Drawing.Point(3, 761);
             this.applyButton.Name = "applyButton";
-            this.applyButton.Size = new System.Drawing.Size(621, 29);
+            this.applyButton.Size = new System.Drawing.Size(1120, 29);
             this.applyButton.TabIndex = 5;
             this.applyButton.Text = "Apply Changes";
             this.applyButton.UseVisualStyleBackColor = true;
+            // 
+            // mainPictureBox
+            // 
+            this.mainPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.mainPictureBox.Location = new System.Drawing.Point(252, 3);
+            this.mainPictureBox.Name = "mainPictureBox";
+            this.mainPictureBox.Size = new System.Drawing.Size(621, 87);
+            this.mainPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.mainPictureBox.TabIndex = 4;
+            this.mainPictureBox.TabStop = false;
+            this.mainPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPictureBox_Paint);
+            this.mainPictureBox.LostFocus += new System.EventHandler(this.mainPictureBox_LostFocus);
+            this.mainPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseDown);
+            this.mainPictureBox.MouseLeave += new System.EventHandler(this.mainPictureBox_MouseLeave);
+            this.mainPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseMove);
+            this.mainPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPictureBox_MouseUp);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(627, 819);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1125, 883);
             this.Controls.Add(this.tableLayoutPanel1);
             this.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.Name = "Form2";
             this.Text = "Image Editor";
-            ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.zoomBar)).EndInit();
             this.layoutForChangeBrightness.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.changeBrightnessNumeric)).EndInit();
             this.layoutForThresholdNegative.ResumeLayout(false);
@@ -719,6 +732,7 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.changeQuantization)).EndInit();
             this.layoutRotation.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.changeRotateAngle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -733,7 +747,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TableLayoutPanel layoutForChangeBrightness;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         public System.Windows.Forms.Button applyButton;
-        public System.Windows.Forms.TrackBar zoomBar;
         public System.Windows.Forms.DataVisualization.Charting.Chart chart;
         public System.Windows.Forms.NumericUpDown changeBrightnessNumeric;
 
@@ -776,10 +789,10 @@ namespace WindowsFormsApp1
         public System.Windows.Forms.Button makeStrengtheningBoundaries;
 
         public System.Windows.Forms.Button makeSolarization;
-        public System.Windows.Forms.PictureBox mainPictureBox;
 
         public System.Windows.Forms.Button makeRotateButton;
         public System.Windows.Forms.NumericUpDown changeRotateAngle;
         private System.Windows.Forms.TableLayoutPanel layoutRotation;
+        public System.Windows.Forms.PictureBox mainPictureBox;
     }
 }

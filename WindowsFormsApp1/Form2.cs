@@ -53,12 +53,14 @@ namespace WindowsFormsApp1
         {
             selection.Width = 0;
             selection.Height = 0;
+            mainPictureBox.Invalidate();
         }
 
         private void mainPictureBox_MouseLeave(object sender, EventArgs e)
         {
             selection.Width = 0;
             selection.Height = 0;
+            mainPictureBox.Invalidate();
         }
 
         private static Color Interpolate((Color, Color, Color, Color) neightbors, double x, double y)
@@ -120,6 +122,7 @@ namespace WindowsFormsApp1
             }
             selection.Width = 0;
             selection.Height = 0;
+            mainPictureBox.Invalidate();
         }
 
         private void mainPictureBox_Paint(object sender, PaintEventArgs e)
@@ -239,12 +242,29 @@ namespace WindowsFormsApp1
 
         private void makeStrengtheningBoundaries_Click(object sender, EventArgs e)
         {
-            this.mainPictureBox.Image = Form1.makeStrengtheningBoundaries(new Bitmap(this.mainPictureBox.Image));
+            Form3 form3 = new Form3();
+            this.TopLevel = false;
+            //this.TopMost = false;
+            form3.TopLevel = true;
+            form3.TopMost = true;
+            form3.image = new Bitmap(this.mainPictureBox.Image);
+            form3.Show();
+            form3.FormClosed += (a, b) =>
+            {
+                this.mainPictureBox.Image = form3.image;
+                this.TopLevel = true;
+                this.TopMost = true;
+            };
         }
 
         private void makeRotateButton_Click(object sender, EventArgs e)
         {
             this.mainPictureBox.Image = Form1.RotateImage(new Bitmap(this.mainPictureBox.Image), (double)this.changeRotateAngle.Value);
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
